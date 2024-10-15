@@ -1,6 +1,6 @@
 import React from 'react'
 import CustomMenu from './CustomMenu'
-import { ChevronRight } from 'lucide-react'
+import { ChevronDown, ChevronRight } from 'lucide-react'
 
 function Navbar() {
   const [menuOpen, setMenuOpen] = React.useState(false)
@@ -31,8 +31,8 @@ function Navbar() {
       </nav>
       <div className={`menuBar ${menuOpen ? '' : 'hidden'}`}>
         <ul>
-          <li><span><ChevronRight onClick={toggleMode} /></span> About
-            <ul>
+          <li><span onClick={toggleMode}>{isDown ? <ChevronDown /> : <ChevronRight />}</span> About
+            <ul className={`dropdown ${isDown ? 'open' : ''}`}>
               <li>Education</li>
               <li>Skills</li>
               <li>Projects</li>

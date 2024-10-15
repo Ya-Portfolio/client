@@ -93,3 +93,15 @@ nav ul li:last-child {
 .menuBar li ul {
     padding: 0 0 0 50px;
 }
+
+.dropdown {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, opacity 0.3s ease;
+}
+
+.dropdown.open {
+    max-height: 200px;
+    opacity: 1;
+}
