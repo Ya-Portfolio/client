@@ -1,0 +1,95 @@
+.customMenu {
+    width: 25px;
+    height: 25px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    cursor: pointer;
+    z-index: 100;
+}
+
+.menuItem {
+    width: 10px;
+    height: 10px;
+    background: var(--dark-bg-color);
+    border-radius: 50%;
+}
+
+nav li {
+    list-style: none;
+}
+
+nav ul {
+    padding: 40px 40px 40px 120px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav ul li:last-child {
+    position: relative;
+    right: 100px;
+    z-index: 101;
+}
+
+.logoheader h1 {
+    font-size: 40px;
+    padding: 5px 10px;
+    line-height: 52px;
+    color: var(--dark-font-color);
+}
+
+.border {
+    height: 48px;
+    width: 12px;
+    border: 3px solid var(--dark-font-color);
+    border-radius: 3px;
+}
+
+.logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.menuBar {
+    width: 50%;
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100vh;
+    background-color: var(--dark-font-color);
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    transition: max-height 0.5s ease, opacity 0.5s ease;
+    padding: 100px;
+    font-size: 24px;
+}
+
+
+.menuBar.hidden {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+}
+
+.hiddenContent {
+    opacity: 0;
+    display: none;
+}
+
+.visibleContent {
+    opacity: 1;
+    transition: opacity 0.5s ease;
+    display: block;
+}
+
+.menuBar li {
+    list-style: none;
+    margin: 10px 0;
+}
+
+.menuBar li ul {
+    padding: 0 0 0 50px;
+}

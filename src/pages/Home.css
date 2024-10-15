@@ -1,0 +1,66 @@
+.home {
+    background-color: var(--dark-bg-color);
+}
+
+main {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+}
+
+.additionalColumn {
+    background-color: var(--dark-font-color);
+    width: 40%;
+    height: 100%;
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 80px;
+}
+
+.imageHandler {
+    height: 100%;
+    width: 100%;
+    z-index: 99;
+    position: absolute;
+    bottom: 0;
+    overflow: hidden;
+    right: 0%;
+}
+
+.imageHandler img {
+    height: 100%;
+    scale: 1.75;
+    width: 100%;
+    object-fit: contain;
+    position: relative;
+    right: -25%;
+}
+
+.mainContent {
+    color: var(--dark-font-color);
+    height: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 0 0 120px;
+}
+
+.mainContent h1 {
+    font-size: 100px;
+    line-height: 90px;
+}
+
+.skills {
+    display: flex;
+    align-items: center;
+    padding-top: 25px;
+}
+
+.skills p {
+    padding: 0px 12px;
+}
+
+.skills p:not(:last-child) {
+    border-right: 2px solid var(--dark-font-color);
+}
