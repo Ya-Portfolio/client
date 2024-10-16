@@ -3,7 +3,6 @@ import './Slide.css'; // Ensure to create this file for styles
 
 const CardCarousel = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [scrolling, setScrolling] = useState(false);
 
   const cardItems = [
     {
@@ -28,34 +27,9 @@ const CardCarousel = () => {
     },
   ];
 
-  const handleScroll = (event) => {
-    if (scrolling) return;
-
-    const direction = event.deltaY > 0 ? 'next' : 'prev';
-    setScrolling(true);
-
-    if (direction === 'next') {
-      if (currentIndex < cardItems.length - 1) {
-        setCurrentIndex((prevIndex) => prevIndex + 1);
-      } else {
-        console.log('Navigating to the next page');
-      }
-    } else if (direction === 'prev') {
-      if (currentIndex > 0) {
-        setCurrentIndex((prevIndex) => prevIndex - 1);
-      }
-    }
-
-    setTimeout(() => setScrolling(false), 1000); 
+  const handleCardClick = (index) => {
+    setCurrentIndex(index);
   };
-
-  useEffect(() => {
-    window.addEventListener('wheel', handleScroll);
-
-    return () => {
-      window.removeEventListener('wheel', handleScroll);
-    };
-  }, [currentIndex, scrolling]);
 
   return (
     <div className="carousel-container">
@@ -65,6 +39,7 @@ const CardCarousel = () => {
             key={card.id}
             className={`card ${index === currentIndex ? 'active' : ''} ${index < currentIndex ? 'prev' : ''} ${index > currentIndex ? 'next' : ''}`}
             style={{ zIndex: cardItems.length - Math.abs(currentIndex - index) }} // Dynamic z-index
+            onClick={() => handleCardClick(index)} // Update currentIndex on click
           >
             <h2>{card.title}</h2>
             <p>{card.copy}</p>

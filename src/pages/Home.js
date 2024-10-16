@@ -10,6 +10,7 @@ function Home() {
     const handleScroll = (e) => {
         e.preventDefault();
         scrollContainerRef.current.scrollLeft += e.deltaY;
+        scrollContainerRef.current.style.scrollBehavior = 'smooth';
     };
 
     return (

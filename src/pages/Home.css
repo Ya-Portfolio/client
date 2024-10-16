@@ -2,26 +2,27 @@
 .secondaryChild {
     display: flex;
     position: relative;
-    overflow-x: auto;
+    overflow-x: auto; 
     top: 0;
     bottom: 0;
     white-space: nowrap;
     left: 0;
+    scroll-behavior: smooth; 
 }
 
 .child,
 .tertiaryChild {
-    min-width: 100vw;
-    height: auto;
+    min-width: 100vw; 
+    height: auto; 
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    height: 100vh; 
     overflow: hidden;
-    flex: none;
+    flex: none; 
     background: #000;
+    transition: transform 0.5s ease; 
 }
-
 
 .landingPage {
     width: 100%;
@@ -30,9 +31,10 @@
     background: var(--dark-bg-color);
     z-index: 60;
     background-attachment: fixed;
+    position: sticky;
+    left: 0;
+    top: 0;
 }
-
-
 
 .mainContent {
     width: 60%;
@@ -48,7 +50,7 @@
 
 .mainContent h1 {
     font-size: 100px;
-    line-height: 92px
+    line-height: 92px;
 }
 
 .mainContent .skills {
@@ -74,6 +76,10 @@
     overflow: hidden;
     right: 5%;
     z-index: -1;
+}
+
+.landingPageSmaller{
+    scale: 0.75;
 }
 
 .imageHandler img {
@@ -127,9 +133,7 @@
 .marks p:first-child {
     font-size: 24px;
     line-height: 32px;
-
 }
-
 
 .marks p:first-child {
     font-weight: 700;
@@ -138,7 +142,6 @@
 
 .marks p:last-child {
     text-align: right;
-
 }
 
 .clgName p:last-child,
@@ -147,20 +150,35 @@
     line-height: 24px;
 }
 
-/* swiper librabry */
-
-.swiper-wrapper>div {
-    width: 569px!important;
-    text-wrap: wrap;
-    overflow: hidden;
-    margin-right: 50px;
-}
-
-.tertiaryLastbutOneChild{
+.tertiaryLastbutOneChild {
     width: 100%;
     height: 100%;
+    padding: 0 0 0 120px;
 }
 
-.tertiaryLastbutOneChild{
-    padding: 0 0 0 120px;
+.moveBackward {
+    transform: translateX(-100%);
+}
+
+.parallax {
+    position: relative;
+}
+
+.parallax-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--dark-bg-color);
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    transform: translateZ(-1px) scale(2);
+    z-index: 1;
+}
+
+.mainContentSecondaryPage {
+    z-index: 2;
 }
