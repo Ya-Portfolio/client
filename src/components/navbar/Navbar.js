@@ -2,7 +2,7 @@ import React from 'react'
 import CustomMenu from './CustomMenu'
 import { ChevronDown, ChevronRight } from 'lucide-react'
 
-function Navbar() {
+function Navbar({ title, color = 'light' }) {
   const [menuOpen, setMenuOpen] = React.useState(false)
   const [isDown, setIsDown] = React.useState(false)
   const clickHandler = () => {
@@ -16,20 +16,20 @@ function Navbar() {
   return (
     <>
       <nav>
-        <ul>
+        <ul className={color === 'dark' ? '' : 'fixedPos'}>
           <li className='ebGaramond logoheader'>
             <div className='logo'>
               <div className="border"></div>
-              <h1>CG</h1>
+              <h1>{title}</h1>
               <div className="border"></div>
             </div>
           </li>
           <li>
-            <CustomMenu clickHandler={clickHandler} />
+            <CustomMenu clickHandler={clickHandler} color = {color}/>
           </li>
         </ul>
       </nav>
-      <div className={`menuBar ${menuOpen ? '' : 'hidden'}`}>
+      <div className={`menuBar nunito ${menuOpen ? '' : 'hidden'}`}>
         <ul>
           <li><span onClick={toggleMode}>{isDown ? <ChevronDown /> : <ChevronRight />}</span> About
             <ul className={`dropdown ${isDown ? 'open' : ''}`}>

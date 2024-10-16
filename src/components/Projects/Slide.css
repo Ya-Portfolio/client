@@ -1,0 +1,36 @@
+.card {
+    width: 75vw;
+    height: 80vh;
+    padding: 20px;
+    background: var(--dark-font-color);
+    transition: opacity 0.5s ease;
+    position: absolute;
+    border-radius: 20px;
+    box-shadow: 0 10px 5px rgba(0, 0, 0, 0.1);
+    left: 30px;
+}
+
+.carousel {
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    top: 15%;
+}
+
+.card:not(.active) {
+    opacity: 0.2;
+}
+
+.card.active {
+    opacity: 1;
+    z-index: 1;
+    background: linear-gradient(to bottom, rgba(239, 239, 239, 1), rgba(239, 239, 239, 0.8));
+}
+
+.card.prev {
+    transform: translateX(-30px);
+}
+
+.card.next {
+    transform: translateX(90px);
+}

@@ -11,12 +11,28 @@
 .menuItem {
     width: 10px;
     height: 10px;
+    background: var(--dark-font-color);
+    border-radius: 50%;
+}
+
+.menuItemdark {
+    width: 10px;
+    height: 10px;
     background: var(--dark-bg-color);
     border-radius: 50%;
 }
 
 nav li {
     list-style: none;
+    z-index: 101;
+}
+
+.fixedPos {
+    position: fixed;
+    right: 0;
+    z-index: 100;
+    width: 100vw;
+    z-index: 50;
 }
 
 nav ul {
@@ -29,7 +45,7 @@ nav ul {
 nav ul li:last-child {
     position: relative;
     right: 100px;
-    z-index: 101;
+    /* z-index: 101; */
 }
 
 .logoheader h1 {
@@ -69,9 +85,10 @@ nav ul li:last-child {
 
 
 .menuBar.hidden {
-    max-height: 0;
+    /* max-height: 0; */
     opacity: 0;
     overflow: hidden;
+    display: none;
 }
 
 .hiddenContent {
@@ -88,6 +105,8 @@ nav ul li:last-child {
 .menuBar li {
     list-style: none;
     margin: 10px 0;
+    color: var(--dark-bg-color);
+    cursor: pointer;
 }
 
 .menuBar li ul {

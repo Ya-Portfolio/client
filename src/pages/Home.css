@@ -1,66 +1,166 @@
-.home {
-    background-color: var(--dark-bg-color);
-}
-
-main {
-    width: 100vw;
-    height: 100vh;
+.homeContainer,
+.secondaryChild {
+    display: flex;
     position: relative;
+    overflow-x: auto;
+    top: 0;
+    bottom: 0;
+    white-space: nowrap;
+    left: 0;
 }
 
-.additionalColumn {
-    background-color: var(--dark-font-color);
-    width: 40%;
+.child,
+.tertiaryChild {
+    min-width: 100vw;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+    flex: none;
+    background: #000;
+}
+
+
+.landingPage {
+    width: 100%;
     height: 100%;
     display: block;
-    position: absolute;
-    top: 0;
-    right: 80px;
+    background: var(--dark-bg-color);
+    z-index: 60;
+    background-attachment: fixed;
 }
 
-.imageHandler {
-    height: 100%;
-    width: 100%;
-    z-index: 99;
-    position: absolute;
-    bottom: 0;
-    overflow: hidden;
-    right: 0%;
-}
 
-.imageHandler img {
-    height: 100%;
-    scale: 1.75;
-    width: 100%;
-    object-fit: contain;
-    position: relative;
-    right: -25%;
-}
 
 .mainContent {
-    color: var(--dark-font-color);
-    height: 70%;
+    width: 60%;
+    height: 88%;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    color: var(--dark-font-color);
     padding: 0 0 0 120px;
+    position: relative;
+    z-index: 59;
 }
 
 .mainContent h1 {
     font-size: 100px;
-    line-height: 90px;
+    line-height: 92px
 }
 
-.skills {
+.mainContent .skills {
     display: flex;
-    align-items: center;
     padding-top: 25px;
 }
 
-.skills p {
-    padding: 0px 12px;
+.mainContent .skills p {
+    border-right: 2px solid var(--dark-font-color);
+    padding: 0 14px;
 }
 
-.skills p:not(:last-child) {
-    border-right: 2px solid var(--dark-font-color);
+.mainContent .skills p:last-child {
+    border-right: none;
+}
+
+.additionalContent {
+    width: 40%;
+    height: 100%;
+    background: var(--dark-font-color);
+    position: absolute;
+    top: 0;
+    overflow: hidden;
+    right: 5%;
+    z-index: -1;
+}
+
+.imageHandler img {
+    scale: 1.75;
+    position: absolute;
+    bottom: 24.2%;
+    right: 14%;
+}
+
+.secondaryLanding {
+    width: 100%;
+    height: 100%;
+    background: var(--dark-bg-color);
+}
+
+.mainContentSecondaryPage {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 0 0 0 120px;
+    align-items: center;
+    color: var(--light-bg-color);
+}
+
+.content {
+    width: 600px;
+    font-size: 24px;
+    line-height: 40px;
+    text-wrap: auto;
+    text-align: justify;
+}
+
+.tertiaryChild {
+    background: var(--dark-bg-color);
+}
+
+.sideContent h2 {
+    font-size: 40px;
+    line-height: 52px;
+    padding-bottom: 20px;
+}
+
+.eduContainer {
+    padding-bottom: 20px;
+    width: 500px;
+    justify-content: space-between;
+}
+
+.clgName p:first-child,
+.marks p:first-child {
+    font-size: 24px;
+    line-height: 32px;
+
+}
+
+
+.marks p:first-child {
+    font-weight: 700;
+    text-align: right;
+}
+
+.marks p:last-child {
+    text-align: right;
+
+}
+
+.clgName p:last-child,
+.marks p:last-child {
+    font-size: 18px;
+    line-height: 24px;
+}
+
+/* swiper librabry */
+
+.swiper-wrapper>div {
+    width: 569px!important;
+    text-wrap: wrap;
+    overflow: hidden;
+    margin-right: 50px;
+}
+
+.tertiaryLastbutOneChild{
+    width: 100%;
+    height: 100%;
+}
+
+.tertiaryLastbutOneChild{
+    padding: 0 0 0 120px;
 }
