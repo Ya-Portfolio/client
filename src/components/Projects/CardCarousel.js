@@ -1,51 +1,78 @@
-import React, { useEffect, useState } from 'react';
-import './Slide.css'; // Ensure to create this file for styles
+import React, { useEffect } from 'react';
+import './Slide.css';
+import pic from '../../assets/vault/Screenshot (30).png';
+import { Link } from 'react-router-dom';
 
-const CardCarousel = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
+const CardCarousel = ({ setValue }) => {
 
   const cardItems = [
     {
-      id: 1,
-      title: 'Stacked Card Carousel',
-      copy: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus sit amet dui scelerisque, tempus dui non, blandit nulla.',
+      id: Math.random(),
+      title: 'The Vault',
+      copy: 'An app for secure storage of confidential files, featuring a hierarchical access control system.',
+      tags: ['React', 'Node.js', 'Express', 'MongoDB', 'JWT', 'Material-UI'],
+      image: pic,
     },
     {
-      id: 2,
-      title: 'Second Item',
-      copy: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+      id: Math.random(),
+      title: 'Project 2',
+      copy: 'Another project description.',
+      tags: ['React', 'Node.js', 'MongoDB'],
+      image: pic,
     },
     {
-      id: 3,
-      title: 'A Third Card',
-      copy: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus sit amet dui scelerisque, tempus dui non, blandit nulla.',
+      id: Math.random(),
+      title: 'Project 3',
+      copy: 'Third project description.',
+      tags: ['React', 'Node.js', 'MongoDB'],
+      image: pic,
     },
     {
-      id: 4,
-      title: 'Fourth',
-      copy: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+      id: Math.random(),
+      title: 'Project 4',
+      copy: 'Fourth project description.',
+      tags: ['React', 'Node.js', 'MongoDB'],
+      image: pic,
     },
   ];
 
-  const handleCardClick = (index) => {
-    setCurrentIndex(index);
-  };
+  document.addEventListener('DOMContentLoaded', () => {
+    const quaternaryPage = document.querySelector('.quaternaryPage')
+    const content1 = document.querySelector('.carousel')
+    quaternaryPage.style.height = 600 * cardItems.length + 800 + 'px'
+    content1.style.height = '100%'
+  })
+
+  useEffect(() => {
+    const quaternaryPage = document.querySelector('.quaternaryPage')
+    const content1 = document.querySelector('.carousel')
+    quaternaryPage.style.height = 600 * cardItems.length + 800 + 'px'
+    content1.style.height = '100%'
+  }, [cardItems.length])
+
+  const handleScrolling = (e) => {
+    console.log(window.scrollY)
+  }
 
   return (
-    <div className="carousel-container">
-      <div className="carousel">
-        {cardItems.map((card, index) => (
-          <div
-            key={card.id}
-            className={`card ${index === currentIndex ? 'active' : ''} ${index < currentIndex ? 'prev' : ''} ${index > currentIndex ? 'next' : ''}`}
-            style={{ zIndex: cardItems.length - Math.abs(currentIndex - index) }} // Dynamic z-index
-            onClick={() => handleCardClick(index)} // Update currentIndex on click
-          >
-            <h2>{card.title}</h2>
-            <p>{card.copy}</p>
+    <div className="carousel" onWheel={handleScrolling}>
+      {cardItems.map((card, index) => (
+        <div className='card' key={card.id} style={{ zIndex: 10 - 2 * index }}>
+          <h2>{card.title}</h2>
+          <div className="tags">
+            {
+              card.tags.map(tag => (
+                <span key={tag}>{tag}</span>
+              ))
+            }
           </div>
-        ))}
-      </div>
+          <img src={card.image} alt="" />
+          <p>{card.copy}</p>
+          <div className="visit nunito">
+           <Link to={`/project`}> Read More</Link>
+          </div>
+        </div>
+      ))}
     </div>
   );
 };

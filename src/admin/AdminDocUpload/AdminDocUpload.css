@@ -1,0 +1,147 @@
+.adminDocUpload {
+    margin: 50px 0 0 150px;
+    width: 80%;
+
+    h1 {
+        font-size: 52px;
+        line-height: 42px;
+        font-weight: 600;
+        color: var(--font-color);
+    }
+}
+
+.adminDocContainer {
+    margin: 65px -3px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.documentCard {
+    padding: 12px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    font-family: "Helvetica Neue", sans-serif;
+    font-size: 14px;
+    color: var(--font-color);
+    position: relative;
+    width: 250px;
+    height: 250px;
+    margin: 6px;
+    background-color: var(--bg-color);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    margin: 0 50px 50px 0;
+
+    .documentCardIcon {
+        background-color: #fff;
+        border-radius: 6px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+.documentCard:hover {
+    transform: translateY(1px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+.documentCard h3 {
+    font-size: 18px;
+    margin: 8px 0;
+}
+
+.documentCard p {
+    font-size: 14px;
+    line-height: 1.4;
+    color: var(--font-color);
+}
+
+.documentFirstChild p:last-child {
+    font-weight: 700;
+}
+
+.documentFirstChild {
+    display: flex;
+    /* justify-content: space-between; */
+    align-items: center;
+    padding: 3px;
+    margin: 10px 0;
+}
+
+
+.docIconContainer {
+    margin-right: 10px;
+}
+
+.documentName {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+
+    p {
+        font-size: 16px;
+    }
+}
+
+.documentCard {
+    width: 250px;
+    height: 250px;
+    background: var(--bg-color);
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    cursor: pointer;
+}
+
+/* .lastCard {
+    width: 250px;
+    height: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--bg-color);
+    border-radius: 20px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    cursor: pointer;
+
+    h1 {
+        background: var(--font-secondary-colo);
+        color: var(--font-color);
+    }
+
+    .documentCardIcon {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+        color: var(--font-secondary-color);
+    }
+} */
+
+.lastCardAdmin {
+
+    input {
+        outline: none;
+        padding: 5px;
+        background: var(--bg-color);
+    }
+}
+
+.documentCard:hover {
+    transform: scale(1.05);
+}
+
+.documentCard:active {
+    transform: scale(0.95);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.documentCardIcon h1 {
+    font-size: 5rem;
+    color: #007aff;
+    margin: 0;
+}

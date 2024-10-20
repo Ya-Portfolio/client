@@ -1,0 +1,158 @@
+.individualProject h1 {
+    font-size: 80px;
+    width: 100%;
+    padding: 25px 0;
+    color: var(--dark-font-color);
+
+    svg {
+        margin-left: 10px;
+    }
+
+    &:hover {
+        text-decoration: underline;
+        cursor: default;
+    }
+}
+
+.individualProject {
+    padding: 0 120px 0 120px;
+    text-align: justify;
+    background: var(--dark-bg-color);
+    color: var(--light-font-color);
+}
+
+.blogProjectContainer {
+    height: 400px;
+    width: 800px;
+    margin: auto;
+}
+
+.blogProjectContainer img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.projectDiv {
+    padding: 40px;
+    font-size: 18px;
+}
+
+.projecttags {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 40px auto;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 800px;
+
+    span {
+        padding: 8px 16px;
+        margin: 5px;
+        border-radius: 5px;
+        background-color: var(--dark-font-color);
+        color: var(--dark-bg-color);
+        font-size: 16px;
+    }
+}
+
+.eachDiv {
+    margin: 24px auto;
+
+    h2 {
+        margin: 10px 0;
+        font-size: 28px;
+    }
+}
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 90vw;
+    background-color: var(--dark-bg-color);
+    height: 91vh;
+    transform: translate(5%, 5%);
+    border: 1px solid var(--dark-font-color);
+    border-radius: 10px;
+    z-index: 100;
+
+    img{
+        height: 590px;
+    }
+
+    .cancelImg img {
+        height: 40px;
+        filter: invert(1);
+        position: absolute;
+        top: 4%;
+        left: 2%;
+
+    }
+
+    .modalOverlay {
+        display: flex;
+        height: 100%;
+        width: 100%;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+
+    .next,
+    .prev {
+        height: 40px;
+        width: 40px;
+        border-radius: 50%;
+        background-color: var(--light-font-color);
+        color: var(--dark-bg-color);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 20px;
+    }
+}
+
+
+
+.scroll-container {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    margin: auto;
+
+    &:hover {
+        .gallery {
+            animation-play-state: paused;
+        }
+    }
+}
+
+.gallery {
+    display: flex;
+    animation: scroll var(--animation-duration) linear infinite;
+    z-index: 0;
+}
+
+.galleryImage {
+    flex: 0 0 auto;
+    align-items: center;
+    margin: 40px 0;
+
+    img {
+        height: 600px;
+        border-radius: 20px;
+        margin: 10px;
+        object-fit: cover;
+    }
+}
+
+
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-450%);
+    }
+}

@@ -1,0 +1,36 @@
+.documentsContainer {
+    margin-top: 200px;
+    padding: 40px 0 0 120px;
+}
+
+.docsContainer, .pageContainer {
+    display: grid;
+    margin-top: 50px;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    row-gap: 60px;
+}
+
+.pageContainer{
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+}
+
+.docsContainer img, .pageContainer img {
+    height: 150px;
+}
+
+.folders, .pages {
+    position: relative;
+    cursor: pointer;
+}
+
+.folders p {
+    position: absolute;
+    bottom: 30px;
+    left: 60px;
+}
+
+.pages p{
+    position: absolute;
+    bottom: 30px;
+    left: 18px;
+}

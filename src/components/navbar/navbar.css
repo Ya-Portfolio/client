@@ -22,6 +22,11 @@
     border-radius: 50%;
 }
 
+nav {
+    z-index: 101;
+    position: relative;
+}
+
 nav li {
     list-style: none;
     z-index: 101;
@@ -51,7 +56,7 @@ nav ul li:last-child {
 .logoheader h1 {
     font-size: 40px;
     padding: 5px 10px;
-    line-height: 52px;
+    line-height: 80px;
     color: var(--dark-font-color);
 }
 
@@ -66,11 +71,13 @@ nav ul li:last-child {
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 10;
+    position: relative;
 }
 
 .menuBar {
     width: 50%;
-    position: absolute;
+    position: fixed;
     right: 0;
     top: 0;
     height: 100vh;
@@ -89,6 +96,16 @@ nav ul li:last-child {
     opacity: 0;
     overflow: hidden;
     display: none;
+}
+
+.sticky {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: var(--dark-bg-color);
+    z-index: 15;
+    height: 200px;
 }
 
 .hiddenContent {
@@ -123,4 +140,74 @@ nav ul li:last-child {
 .dropdown.open {
     max-height: 200px;
     opacity: 1;
+}
+
+.value {
+    font-size: 250px !important;
+    opacity: 0;
+    font-weight: 700;
+    color: var(--light-bg-color) !important;
+    position: absolute;
+    left: 0;
+    top: 35px;
+    margin-right: -100%;
+    transition: opacity 1s ease-in-out, margin 0.5s ease-in-out;
+}
+
+.value.active {
+    opacity: 0.1;
+    margin-left: 0;
+}
+
+.value.hidden {
+    opacity: 0;
+    margin-right: -100%;
+    transform: translateX(-100%);
+}
+
+
+.sticky ul {
+    background: var(--dark-bg-color);
+}
+
+.menuBar .customMenu {
+    z-index: 10;
+    position: absolute;
+    top: 7%;
+    right: 18%;
+}
+
+.menuBar .menuItem {
+    background: var(--dark-bg-color);
+}
+
+.toggleButton {
+    position: absolute;
+    top: -2px;
+    right: -50px;
+    z-index: 1000;
+}
+
+.menuBar::before {
+    content: 'CG';
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: var(--dark-font-color);
+    display: flex;
+    left: -6%;
+    justify-content: center;
+    align-items: center;
+    color: var(--dark-bg-color);
+    font-family: "EB Garamond", serif;
+    font-size: 40px;
+    line-height: 42px;
+    font-weight: 700;
+    border-left: 2px solid var(--dark-bg-color);
+}
+
+.menuBar ul li {
+    display: flex;
+    align-items: center;
 }

@@ -1,0 +1,134 @@
+.blogContainer {
+    padding: 230px 150px 0 120px;
+}
+
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    height: 80vh;
+    gap: 3px;
+    /* grid-template-rows: repeat(3, 1fr); */
+}
+
+.cardCard h2 {
+    font-size: 21px;
+    font-weight: 500;
+}
+
+.cardCard {
+    background: #3748544a;
+    color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px;
+    box-shadow: 0 15px 20px rgba(0, 0, 0, 0.2);
+    width: 200px;
+    /* border: 1px var(--dark-bg-color) solid; */
+    height: 200px;
+    text-align: center;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    &:hover {
+        scale: 1.1;
+
+        h2 {
+            display: none;
+        }
+
+        .link {
+            display: none;
+        }
+    }
+}
+
+.link {
+    padding: 6px 20px;
+    border: 1px solid #fff;
+    border-radius: 8px;
+    margin: 20px auto;
+    width: 90px;
+    text-decoration: none;
+
+    a {
+        color: #fff;
+        font-size: 20px;
+    }
+
+    &:hover {
+        background: var(--dark-bg-color);
+
+        a {
+            color: var(--dark-font-color);
+        }
+    }
+}
+
+a {
+    text-decoration: none;
+}
+
+.card-grid .cardCard:first-child {
+    grid-column: span 2;
+    grid-row: span 2;
+    width: 93%;
+    height: 92%;
+}
+
+.card-grid .cardCard:nth-child(19) {
+    grid-column: span 2;
+    grid-row: span 2;
+    width: 93%;
+    height: 92%;
+}
+
+.card-grid .cardCard:nth-child(3),
+.card-grid .cardCard:nth-child(8),
+.card-grid .cardCard:nth-child(18),
+.card-grid .cardCard:nth-child(20),
+.card-grid .cardCard:nth-child(27),
+.card-grid .cardCard:nth-child(28),
+.card-grid .cardCard:nth-child(34),
+.card-grid .cardCard:nth-child(36),
+.card-grid .cardCard:nth-child(9),
+.card-grid .cardCard:nth-child(5) {
+    grid-column: span 2;
+    width: 93%;
+}
+
+.card-grid .cardCard:nth-child(4),
+.card-grid .cardCard:nth-child(30),
+.card-grid .cardCard:nth-child(32),
+.card-grid .cardCard:nth-child(12),
+.card-grid .cardCard:nth-child(21),
+.card-grid .cardCard:nth-child(16),
+.card-grid .cardCard:nth-child(11) {
+    grid-row: span 2;
+    height: 92%;
+}
+
+.imageContainer {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    border-radius: 10px;
+    overflow: hidden;
+    top: 0;
+    left: 0;
+    box-shadow: 0 15px 20px rgba(0, 0, 0, 0.2);
+    background-color: rgba(0, 0, 0, 0.9);
+    z-index: -1;
+}
+
+.imageContainer img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    left: 0;
+    top: 0;
+    opacity: 0.5;
+}

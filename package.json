@@ -3,21 +3,43 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@blocknote/core": "^0.17.1",
+    "@blocknote/mantine": "^0.17.1",
+    "@blocknote/react": "^0.17.1",
     "@emotion/react": "^11.13.3",
     "@emotion/styled": "^11.13.0",
     "@mui/icons-material": "^6.1.4",
     "@mui/material": "^6.1.4",
+    "@radix-ui/react-slot": "^1.1.0",
+    "@reduxjs/toolkit": "^2.3.0",
+    "@shadcn/ui": "^0.0.4",
+    "@tabler/icons-react": "^3.19.0",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "@theme-toggles/react": "^4.1.0",
     "axios": "^1.7.7",
+    "button": "^1.1.1",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.1.1",
+    "framer-motion": "^11.11.9",
     "i8-icon": "^0.9.4",
     "lucide-react": "^0.453.0",
+    "novel": "^0.5.0",
     "react": "^18.3.1",
+    "react-datepicker": "^7.5.0",
     "react-dom": "^18.3.1",
+    "react-redux": "^9.1.2",
+    "react-router-dom": "^6.27.0",
     "react-scripts": "5.0.1",
     "react-stacked-center-carousel": "^1.0.14",
+    "sonner": "^1.5.0",
     "swiper": "^11.1.14",
+    "tailwind-merge": "^2.5.4",
+    "tailwindcss-animate": "^1.0.7",
+    "theme-toggles": "^4.10.1",
+    "uuid": "^10.0.0",
+    "v4": "^0.0.1",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
@@ -43,5 +65,10 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.4.47",
+    "tailwindcss": "^3.4.14"
   }
 }

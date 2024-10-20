@@ -1,0 +1,24 @@
+.addIconAdmin {
+    position: absolute;
+    bottom: 5%;
+    right: 3%;
+    margin: 10px;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    background-color: var(--font-color);
+    cursor: pointer;
+    color: #000;
+    font-size: 20px;
+    transition: all 0.3s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    h1 {
+        color: var(--bg-color) !important;
+        line-height: 11px !important;
+        font-size: 35px !important;
+        height: 19px !important;
+    }
+}

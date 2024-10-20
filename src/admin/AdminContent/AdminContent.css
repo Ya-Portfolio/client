@@ -1,0 +1,158 @@
+/* Apply background and font color to the editor container */
+.bn-container[data-theming-css-demo] {
+    background-color: var(--bg-color);
+    color: var(--font-color);
+}
+
+.bn-container[data-theming-css-demo] .bn-editor {
+    height: 80vh;
+}
+
+/* Override color for the main editor content */
+.bn-container[data-theming-css-demo] .bn-editor {
+    background-color: var(--bg-color);
+    /* color: var(--font-color); */
+}
+
+/* Ensure block content inherits the font color */
+.bn-container[data-theming-css-demo] .bn-block-content,
+.bn-container[data-theming-css-demo] .bn-inline-content {
+    /* color: var(--font-color); */
+}
+
+/* Ensure inline content (rich text areas) use the correct font color */
+.bn-container[data-theming-css-demo] .bn-block-content * {
+    /* color: var(--font-color); */
+}
+
+/* Customize suggestion menu */
+.bn-container[data-theming-css-demo] .bn-suggestion-menu-item[aria-selected="true"],
+.bn-container[data-theming-css-demo] .bn-suggestion-menu-item:hover {
+    /* background-color: var(--bg-color); */
+}
+
+/* Apply color to toolbar items */
+.bn-container[data-theming-css-demo] .bn-toolbar {
+    background-color: var(--bg-color);
+    /* color: var(--font-color); */
+}
+
+.bn-block-content[data-is-empty-and-focused] .bn-inline-content:has(> .ProseMirror-trailingBreak:only-child)::before {
+    color: var(--font-color);
+}
+
+.bn-editor th,
+.bn-editor td {
+    border: 1px solid var(--font-color) !important;
+}
+
+.adminBlog {
+    margin: 50px 0 0 150px;
+    width: 80%;
+}
+
+.buttonsAdminPanel {
+
+    margin: 0px 0px 5px 46px;
+
+    button {
+        padding: 6px 12px;
+        background: var(--font-color);
+        color: var(--bg-color);
+        border-radius: 12px;
+        margin: 0 10px;
+        opacity: 0;
+        font-size: 14px;
+    }
+
+    &:hover {
+        button {
+            opacity: 0.7;
+        }
+    }
+}
+
+.coverImageContainer {
+    position: relative;
+}
+
+.iconUpload {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--bg-secondary-color);
+    position: absolute;
+    bottom: -18%;
+    left: 4.5%;
+    opacity: 1;
+    cursor: pointer;
+    overflow: hidden;
+
+    img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+        opacity: 1;
+    }
+
+    input[type='file'] {
+        display: none;
+    }
+
+    svg {
+        height: 30px;
+    }
+}
+
+.file-upload-form .uploaded-image-container input[type='file'] {
+    display: none;
+}
+
+.uploaded-image-container {
+    cursor: pointer;
+}
+
+
+.buttonsAdminPanel {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.adminBlog {
+    position: relative;
+}
+
+.contentType {
+    position: absolute;
+    z-index: 10;
+    top: -2%;
+    left: 2%;
+    font-size: 100px;
+    color: var(--bg-color);
+}
+
+.publicPageContainer {
+    padding: 120px;
+}
+
+.nonEditableContent .bn-editor {
+    padding-top: 25px;
+}
+
+
+.nonEditableContent::before {
+    content: '';
+    display: block;
+    height: 25px;
+}
+
+.adminTopIcon {
+    position: relative;
+    bottom: -30%;
+    left: 4.5%;
+    margin-bottom: 20px;
+}

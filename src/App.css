@@ -24,12 +24,33 @@ body {
 }
 
 :root {
-  --light-bg-color: #E7E8E7;
+  --light-bg-color: #394A56;
+  --light-font-color: #E7E8E7;
   --dark-bg-color: #22303F;
-  --light-font-color: #394A56;
   --dark-font-color: #8FBFDA;
+  --animation-duration: 30s;
+
+
+
+  --bg-color: #22303F;
+  --font-color: #E7E8E7;
+  --bg-secondary-color: #AAAAAA;
+  --font-secondary-color: #8FBFDA;
+  --icon-size : 32px;
 }
+
+/* :root {
+  --dark-bg-color: #22303F;
+  --light-bg-color: #E7E8E7;
+  --dark-font-color: #8FBFDA;
+  --light-font-color: #E7E8E7;
+} */
+
 
 .nunito {
   font-family: "Nunito Sans", sans-serif;
+}
+
+body {
+  /* background: var(--dark-bg-color); */
 }
