@@ -128,3 +128,58 @@
     border-radius: 12px;
     opacity: 0.5;
 } */
+
+@media only screen and (max-width : 500px) {
+
+    .actualContent2 {
+        padding: 8px;
+
+        .projectContainer {
+            width: 100%;
+            height: auto;
+
+            .card {
+                max-width: 100%;
+                height: auto;
+                max-height: 500px;
+                margin: 10px 0;
+                padding: 10px;
+                border-radius: 10px;
+                bottom: 14%;
+
+                h2 {
+                    font-size: 24px;
+                }
+
+                .tags {
+                    display: flex;
+                    flex-wrap: wrap;
+                    align-items: center;
+                    justify-content: center;
+
+                    span {
+                        padding: 2px 12px;
+                        margin: 6px;
+                    }
+                }
+
+
+
+                img {
+                    width: 100%;
+                    height: 100%;
+                }
+
+                p {
+                    padding: 10px 0 0 0;
+                }
+
+                .visit {
+                    width: 100%;
+                }
+            }
+        }
+    }
+
+
+}

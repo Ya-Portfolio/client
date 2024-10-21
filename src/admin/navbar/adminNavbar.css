@@ -41,3 +41,11 @@
         margin: 36px auto;
     }
 }
+
+
+@media only screen and (max-width: 500px) {
+    .adminNavbar {
+        width: 95%;
+        display: none;
+    }
+}

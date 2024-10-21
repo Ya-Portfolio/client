@@ -9,6 +9,7 @@ import { addBlog, defaultState, setInitialState } from '../../redux/blogSlice';
 import FileUpload from '../Components/fileupload/FileUpload';
 import { useLocation, useParams } from 'react-router-dom';
 import { toast } from 'sonner';
+import { useMediaQuery } from 'react-responsive';
 
 const lightTheme = {
     colors: {
@@ -90,6 +91,22 @@ export default function AdminBlog() {
     const [icon, setIcon] = useState(null);
     const location = useLocation();
     const params = useParams();
+    const isMobile = useMediaQuery({ query: '(max-width: 500px)' });
+
+
+    useEffect(() => {
+        const handlePaddingChange = () => {
+            const block = document.querySelector('.ProseMirror');
+            if (block) {
+                block.style.padding = '11px'; 
+            }
+        };
+
+        if (isMobile) {
+            handlePaddingChange();
+        }
+
+    }, [isMobile]);
 
     const getInitialContentNotDefault = () => {
         if (location.state?.title && location.state.title.toLowerCase().includes('untitled')) {

@@ -237,3 +237,97 @@
         margin-right: -10px;
     }
 }
+
+.deleteIconContainer{
+    position: absolute;
+    right: 2%;
+}
+
+@media only screen and (max-width: 500px) {
+
+    .adminDocUpload {
+        margin: 20px;
+        width: 90%;
+
+        h1 {
+            font-size: 32px;
+            line-height: 36px;
+            font-weight: 600;
+            color: #000000;
+        }
+    }
+
+    .addIconAdmin {
+        bottom: auto;
+        top: 2%;
+    }
+
+
+    .adminDocContainer {
+        margin: 40px 0;
+        display: block;
+    }
+
+    .documentCard {
+        width: 100%;
+        height: auto;
+        margin-bottom: 20px;
+        padding: 10px;
+        border-radius: 16px;
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+        font-size: 16px;
+        background-color: #F8F8F8;
+    }
+
+    .documentCard h3 {
+        font-size: 20px;
+    }
+
+    .documentCard p {
+        font-size: 14px;
+        color: #666666;
+    }
+
+    .documentCard:hover {
+        transform: none;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    }
+
+    .documentFirstChild {
+        display: flex;
+        margin: 10px 0;
+    }
+
+    .documentName p {
+        font-size: 14px;
+        color: #000000;
+    }
+
+    .documentCardIcon h1 {
+        font-size: 3rem;
+        color: #007aff;
+    }
+
+    .certificate .documentCardIcon {
+        height: 100px;
+
+        svg {
+            height: 40px;
+            width: 40px;
+        }
+    }
+
+    .lastdocIcon {
+        .check {
+            width: 24px;
+            height: 24px;
+        }
+    }
+
+    .lastDocumentName span {
+        width: 20px;
+    }
+
+
+
+}

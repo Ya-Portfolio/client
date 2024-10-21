@@ -125,7 +125,6 @@ function Navbar({ title, color = 'light', value, isActive }) {
           </li>
           <li>
             {<Button handleToggle={handleToggle} />}
-
             <CustomMenu clickHandler={clickHandler} color={color} title={title} />
           </li>
         </ul>

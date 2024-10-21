@@ -18,6 +18,7 @@ import AdminFile from './admin/AdminFile/AdminFile';
 import PublicBlog from './public/PublicPage';
 import MainLanding from './admin/mainlanding/MainLanding';
 import AdminNotesContent from './admin/notes/AdminNotesContent';
+import EmailApp from './admin/mail/EmailApp';
 
 
 function App() {
@@ -40,15 +41,15 @@ function App() {
           <Route path='/blog' element={<Blog />} />
           <Route path='/works' element={<IndividualProject />} />
           <Route path='/public/:id' element={<PublicBlog />} />
-          <Route path='/my' element={<StickyScrollRevealDemo />} />
           <Route path='/admin' element={<Admin />}>
             <Route index element={<MainLanding />} />
             <Route path='accessories' element={<AdminContent />} />
-            <Route path=':category/:id' element={<AdminBlog />} />
+            <Route path='email' element={<EmailApp />} />
             <Route path='documents' element={<AdminDocUpload />} />
             <Route path='note' element={<AdminNotesContent />} />
             <Route path='document/:id' element={<AdminFile />} />
             <Route path='edit/:id' element={<AdminBlog />} />
+            <Route path=':category/:id' element={<AdminBlog />} />
           </Route>
         </Routes>
       </BrowserRouter>

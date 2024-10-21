@@ -36,7 +36,7 @@ body {
   --font-color: #E7E8E7;
   --bg-secondary-color: #AAAAAA;
   --font-secondary-color: #8FBFDA;
-  --icon-size : 32px;
+  --icon-size: 32px;
 }
 
 /* :root {
@@ -52,5 +52,5 @@ body {
 }
 
 body {
-  /* background: var(--dark-bg-color); */
+  background: var(--dark-bg-color);
 }

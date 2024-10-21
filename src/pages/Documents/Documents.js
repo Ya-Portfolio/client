@@ -20,18 +20,6 @@ function Documents() {
                     })
                 }
             </div>
-            <div className="pageContainer">
-                {
-                    [1, 2, 3, 4, 5, 6, 7].map((card, index) => {
-                        return (
-                            <div className="pages" key={Math.random()}>
-                                <img src={doc} alt="" />
-                                <p>{"Personal docs"}</p>
-                            </div>
-                        )
-                    })
-                }
-            </div>
         </div>
     )
 }

@@ -67,3 +67,9 @@
 .browse-button:hover {
     background-color: rgb(14, 14, 14);
 }
+
+@media only screen and (max-width: 500px) {
+    .file-upload-form {
+        height: 200px;
+    }
+}

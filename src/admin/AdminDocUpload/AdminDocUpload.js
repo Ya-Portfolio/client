@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import './AdminDocUpload.css'
 import { Check, File } from 'lucide-react'
-import { ArrowRightAlt } from '@mui/icons-material'
+import { ArrowRightAlt, DeleteOutline } from '@mui/icons-material'
 import { useNavigate } from 'react-router-dom'
 import AddIcon from '../Components/addIcon/AddIcon'
 import { IconCertificate } from '@tabler/icons-react'
@@ -57,13 +57,16 @@ function AdminDocUpload() {
         setAddDocument(false)
     }
 
+    const deleteFolder = (index) => {
+
+    }
+
     return (
         <div className="adminDocUpload">
             <h1 className='ebGaramond'>Document Upload Dashboard</h1>
             <div className="adminDocContainer">
                 <div className="documentCard certificate" onClick={() => navigateTo('certificates')}>
                     <div className="documentCardIcon">
-                        {/* <img src="https://templates.iqonic.design/hope-ui/pro/html/file-manager/assets/images/pdf.svg" alt="" /> */}
                         <IconCertificate />
                     </div>
                     <div className="documentCardInfo">
@@ -85,6 +88,9 @@ function AdminDocUpload() {
                 {
                     documents.map((item, index) => (
                         <div className="documentCard" key={Math.random()} onClick={() => navigateTo(index)}>
+                            <div className="deleteIconContainer" onClick={() => deleteFolder(index)}>
+                                <DeleteOutline />
+                            </div>
                             <div className="documentCardIcon">
                                 <img src="https://templates.iqonic.design/hope-ui/pro/html/file-manager/assets/images/pdf.svg" alt="" />
                             </div>

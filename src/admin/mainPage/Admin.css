@@ -6,3 +6,11 @@
     color: var(--font-color);
     overflow-y: auto;
 }
+
+@media only screen and (max-width: 500px) {
+
+    .adminLandingPage {
+        height: auto;
+    }
+
+}

@@ -1,0 +1,104 @@
+.educationComponent {
+    width: 100%;
+    padding: 20px;
+    background-color: var(--bg-color);
+    color: var(--font-color);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    border-radius: 20px;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.05);
+}
+
+.sectionTitle {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.educationItem {
+    margin-bottom: 20px;
+    padding: 20px;
+    background-color: #f5f5f5;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.educationForm, .educationDisplay {
+    width: 100%;
+}
+
+.educationDisplay h3 {
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: 8px;
+}
+
+.educationDisplay p {
+    font-size: 14px;
+    color: #666;
+    margin: 12px 0;
+}
+
+.inputField {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    background-color: var(--bg-color);
+    color: var(--font-color);
+    font-size: 16px;
+}
+
+.actionButton {
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    border: none;
+}
+
+.saveButton {
+    background-color: #4CAF50;
+    color: var(--bg-color);
+    margin-right: 10px;
+}
+
+.saveButton:hover {
+    background-color: #45a049;
+}
+
+.deleteButton {
+    background-color: #f44336;
+    color: white;
+}
+
+.deleteButton:hover {
+    background-color: #da190b;
+}
+
+.editButton {
+    background-color: var(--font-color);
+  color: var(--bg-color);
+    margin-right: 10px;
+}
+
+.editButton:hover {
+    background-color: #0b7dda;
+}
+
+.addButton {
+    background-color: var(--font-color);
+    color: var(--bg-color);
+    padding: 12px 30px;
+    margin-top: 20px;
+}
+
+.addButton:hover {
+    background-color: #005ecb;
+}

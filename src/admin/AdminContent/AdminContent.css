@@ -156,3 +156,30 @@
     left: 4.5%;
     margin-bottom: 20px;
 }
+
+@media only screen and (max-width: 500px) {
+    .adminBlog {
+        margin: 10px;
+        width: 100%;
+    }
+
+    .toggleBtn {
+        display: none;
+    }
+
+    .buttonsAdminPanel {
+        margin: 10px;
+        width: 100%;
+    }
+
+    .contentType {
+        font-size: 40px;
+        top: 1%;
+        left: 3%;
+    }
+
+    .bn-editor{
+        padding: 20px;
+    }
+
+}

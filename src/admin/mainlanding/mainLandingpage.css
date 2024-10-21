@@ -1,0 +1,124 @@
+/* Container Layout */
+.mainLandingContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px;
+    background-color: var(--bg-color);
+    color: var(--font-color);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
+/* Profile Section */
+.profileSection {
+    width: 450px;
+    background-color: var(--bg-color);
+    padding: 20px;
+    margin-bottom: 40px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+    border-radius: 20px;
+    text-align: center;
+}
+
+.profileName {
+    font-size: 28px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.profileAbout {
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+/* Section Containers */
+.sectionsContainer {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1200px;
+    gap: 20px;
+}
+
+/* Education Section */
+.educationSection,
+.internshipSection {
+    flex: 1;
+    background-color: var(--bg-color);
+    padding: 20px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+    border-radius: 20px;
+}
+
+.sectionTitle {
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.educationItem {
+    margin-bottom: 20px;
+}
+
+.educationDisplay,
+.educationForm {
+    text-align: left;
+}
+
+.educationSchool {
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.educationDetails {
+    font-size: 14px;
+    color: #666;
+}
+
+/* Buttons and Input Styling */
+.inputField,
+.textareaField {
+    width: 100%;
+    padding: 10px;
+    border-radius: 12px;
+    border: 1px solid #ccc;
+    margin-bottom: 15px;
+    background-color: var(--bg-color);
+    color: var(--font-color);
+    font-size: 16px;
+}
+
+.textareaField {
+    height: 100px;
+    resize: none;
+}
+
+.actionButton {
+    background-color: var(--font-color);
+    color: var(--bg-color);
+    padding: 10px 20px;
+    border-radius: 12px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.actionButton:hover {
+    background-color: #005ecb;
+}
+
+/* General Block Styling */
+.roundedBlock {
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.05);
+    background-color: var(--bg-color);
+}
+
+.adminMainLandingPage {
+    padding: 50px 0 0 150px;
+    width: 90%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}

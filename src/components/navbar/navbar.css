@@ -211,3 +211,34 @@ nav ul li:last-child {
     display: flex;
     align-items: center;
 }
+
+@media only screen and (max-width : 500px) {
+
+    .sticky {
+        display: none;
+    }
+
+    .fixedPos {
+        padding: 10px;
+        left: 0;
+        right: auto;
+    }
+
+    .logoheader h1 {
+        font-size: 28px;
+    }
+
+    .border {
+        height: 35px;
+        width: 9px;
+    }
+
+    .customMenu div {
+        background-color: #000;
+    }
+
+    .menuBar {
+        width: 90vw;
+    }
+
+}
