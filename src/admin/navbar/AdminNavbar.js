@@ -52,7 +52,7 @@ function AdminNavbar() {
                         <Link to="/admin" style={{ textDecoration: 'none' }}> <Home size={size} style={{ stroke: color }} /> </Link>
                     </div>
                     <div className="adminNavbarItems">
-                        <Link to="/admin/chart" style={{ textDecoration: 'none' }}> <ChartBar size={size} style={{ stroke: color }} /> </Link>
+                        <Link to="/admin/accessories" style={{ textDecoration: 'none' }}> <ChartBar size={size} style={{ stroke: color }} /> </Link>
                     </div>
                     <div className="adminNavbarItems">
                         <Link to="/admin/documents" style={{ textDecoration: 'none' }}> <File size={size} style={{ stroke: color }} /> </Link>

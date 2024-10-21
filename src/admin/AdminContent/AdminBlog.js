@@ -71,30 +71,17 @@ const getInitialContent = (id) => {
     }
 };
 
-const saveToLocalStorage = (content, id) => {
-    const data = localStorage.getItem(id);
-    if (data) {
-        let contentData = JSON.parse(data);
-        localStorage.setItem(id, JSON.stringify({
-            ...contentData,
-            content: content
-        }));
-    }
-};
-
-const saveImageToLocalStorage = ({ type, imageUrl, id }) => {
-    const data = localStorage.getItem(id);
-    if (data) {
-        let content = JSON.parse(data);
-        content[type === "cover" ? "coverImage" : "iconImage"] = imageUrl;
-        localStorage.setItem(id, JSON.stringify(content));
-    }
+const saveToLocalStorage = (content, image, icon, id) => {
+    localStorage.setItem(id, JSON.stringify({
+        content,
+        coverImage: image,
+        iconImage: icon,
+    }));
 };
 
 export default function AdminBlog() {
     const color = useSelector(state => state.color.color);
     const dispatch = useDispatch();
-    const [trigger, setTrigger] = useState(false);
     const [upload, setUpload] = useState({
         cover: false,
         icon: false,
@@ -103,10 +90,6 @@ export default function AdminBlog() {
     const [icon, setIcon] = useState(null);
     const location = useLocation();
     const params = useParams();
-
-    // useEffect(() => {
-    //     setTrigger(true);
-    // }, []);
 
     const getInitialContentNotDefault = () => {
         if (location.state?.title && location.state.title.toLowerCase().includes('untitled')) {
@@ -122,50 +105,33 @@ export default function AdminBlog() {
     };
 
     const editor = useMemo(() => {
-        // if (!trigger) return undefined;
         return BlockNoteEditor.create({ initialContent: getInitialContentNotDefault() });
     }, []);
 
     useEffect(() => {
         const loadInitialHTML = async () => {
             const content = getInitialContent(params.id);
-            assignAllExtractedData(content);
-            if (editor) {
-                if (content) {
-                    const blocks = await editor.tryParseMarkdownToBlocks(content.content);
-                    editor.replaceBlocks(editor.document, blocks);
-                } else {
-                    const defaultContent = getInitialContentNotDefault();
-                    dispatch(setInitialState(defaultContent));
-                }
+            if (content) {
+                const blocks = await editor.tryParseMarkdownToBlocks(content.content);
+                editor.replaceBlocks(editor.document, blocks);
+                setImage(content.coverImage || null);
+                setIcon(content.iconImage || null);
+                setUpload({
+                    cover: !!content.coverImage,
+                    icon: !!content.iconImage,
+                });
+            } else {
+                const defaultContent = getInitialContentNotDefault();
+                dispatch(setInitialState(defaultContent));
             }
         };
         loadInitialHTML();
-    }, []);
-
-    const assignAllExtractedData = (data) => {
-        if (data) {
-            const { coverImage, iconImage } = data;
-            setImage(coverImage || null);
-            setIcon(iconImage || null);
-            setUpload({
-                cover: !!coverImage,
-                icon: !!iconImage,
-            });
-        }
-    };
-
-    // useEffect(() => {
-    //     setUpload({
-    //         cover: !!image,
-    //         icon: !!icon,
-    //     });
-    // }, [image, icon]);
+    }, [editor, dispatch, params.id]);
 
     const handleEditorChange = async () => {
         const html = await editor.blocksToHTMLLossy(editor.document);
         dispatch(addBlog(html));
-        saveToLocalStorage(html, params.id);
+        saveToLocalStorage(html, image, icon, params.id);
     };
 
     if (!editor) {
@@ -177,7 +143,8 @@ export default function AdminBlog() {
         if (file) {
             const imageUrl = URL.createObjectURL(file);
             setImage(imageUrl);
-            saveImageToLocalStorage({ type: "cover", imageUrl, id: params.id });
+            setUpload(prev => ({ ...prev, cover: true }));
+            saveToLocalStorage(editor.blocksToHTMLLossy(editor.document), imageUrl, icon, params.id);
         }
     };
 
@@ -186,17 +153,14 @@ export default function AdminBlog() {
         if (file) {
             const imageUrl = URL.createObjectURL(file);
             setIcon(imageUrl);
-            saveImageToLocalStorage({ type: "icon", imageUrl, id: params.id });
+            setUpload(prev => ({ ...prev, icon: true }));
+            saveToLocalStorage(editor.blocksToHTMLLossy(editor.document), image, imageUrl, params.id);
         }
     };
 
     const saveToCloud = async () => {
         const html = await editor.blocksToHTMLLossy(editor.document);
-        localStorage.setItem(params.id, JSON.stringify({
-            content: html,
-            coverImage: image,
-            iconImage: icon,
-        }));
+        saveToLocalStorage(html, image, icon, params.id);
         toast.message("Saved Successfully");
     };
 

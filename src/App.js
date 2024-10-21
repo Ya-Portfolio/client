@@ -16,6 +16,8 @@ import { StickyScrollRevealDemo } from './utils/My';
 import AdminDocUpload from './admin/AdminDocUpload/AdminDocUpload';
 import AdminFile from './admin/AdminFile/AdminFile';
 import PublicBlog from './public/PublicPage';
+import MainLanding from './admin/mainlanding/MainLanding';
+import AdminNotesContent from './admin/notes/AdminNotesContent';
 
 
 function App() {
@@ -40,9 +42,11 @@ function App() {
           <Route path='/public/:id' element={<PublicBlog />} />
           <Route path='/my' element={<StickyScrollRevealDemo />} />
           <Route path='/admin' element={<Admin />}>
-            <Route index element={<AdminContent />} />
+            <Route index element={<MainLanding />} />
+            <Route path='accessories' element={<AdminContent />} />
             <Route path=':category/:id' element={<AdminBlog />} />
             <Route path='documents' element={<AdminDocUpload />} />
+            <Route path='note' element={<AdminNotesContent />} />
             <Route path='document/:id' element={<AdminFile />} />
             <Route path='edit/:id' element={<AdminBlog />} />
           </Route>

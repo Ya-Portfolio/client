@@ -14,7 +14,10 @@ function AdminFile() {
   const [addFile, setAddFile] = useState(false);
   const textRef = useRef(null);
   const descRef = useRef();
+  const fileRef = useRef();
   const lastCardRef = useRef();
+  const [file, setFile] = useState(null);
+  const [hasImage, setHasImage] = useState(false);
 
   const addFileEvent = () => {
     setAddFile(!addFile);
@@ -80,6 +83,15 @@ function AdminFile() {
     }
     reader.readAsDataURL(file);
   }
+
+  const handleFileAdditionImg = (event) => {
+    const selectedFile = event.target.files[0];
+    if (selectedFile) {
+      const url = URL.createObjectURL(selectedFile);
+      setFile(url);
+      setHasImage(true);
+    }
+  };
 
   const handleFileAddition = (e, i) => {
     const file = e.target.files[0];
@@ -172,7 +184,38 @@ function AdminFile() {
           addFile && (
             <div className="fileCards editableFile" ref={lastCardRef}>
               <div className="fileImgBg">
-                <FileArchiveIcon />
+                {true ? (
+                  hasImage ? (
+                    <label htmlFor='newfile'>
+                      <img
+                        src={file}
+                        alt="Uploaded Preview"
+                        style={{ width: '100%', height: '100%' }}
+                      />
+                      <input
+                        type="file"
+                        id='newfile'
+                        ref={fileRef}
+                        style={{ display: 'none' }}
+                        onChange={handleFileAdditionImg}
+                      />
+                    </label>
+
+                  ) : (
+                    <label htmlFor='newfile'>
+                      <Plus />
+                      <input
+                        type="file"
+                        id='newfile'
+                        ref={fileRef}
+                        style={{ display: 'none' }}
+                        onChange={handleFileAdditionImg}
+                      />
+                    </label>
+                  )
+                ) : (
+                  <File />
+                )}
               </div>
               <div className="adminEditIcon" onClick={handleNewAddition}>
                 <p>
