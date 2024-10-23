@@ -149,7 +149,7 @@ export default function AdminBlog() {
         const jsonContent = JSON.stringify(editor.document);
         await axiosPrivate.put(`/file/`, {
             content: jsonContent,
-            type: "blogs",
+            type: location.state.category,
             title: title,
             _id: params.id
         }).then((res) => {

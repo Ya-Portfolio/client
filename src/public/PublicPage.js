@@ -91,10 +91,10 @@ export default function PublicBlog() {
     const getInitialContent = async (id) => {
         try {
             const res = await axiosPrivate.get('/file', { params: { _id: id } });
-            const fetchedImage = res.data?.data?.file?.coverImage?.location || null;
+            const fetchedImage = res.data?.data?.file?.coverPhoto?.location || null;
             const fetchedIcon = res.data?.data?.file?.iconImage || null;
             const fetchedContent = res.data?.data?.file?.content || '';
-
+            console.log(res)
             setImage(fetchedImage);
             setIcon(fetchedIcon);
 
