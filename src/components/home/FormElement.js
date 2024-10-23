@@ -21,15 +21,21 @@ const ContactForm = () => {
         }));
     };
 
-    const handleSubmit = async(e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         console.log(formData);
         await axiosPrivate.post('/contact', {
             ...formData,
-            meetDate : formData.date,
-            meetTime
-        });
-        toast.info('Check your mail for the confirmation');
+            message: formData.brief,
+            meetDate: formData.wantGMeet ? formData.date : null,
+            meetTime: formData.wantGMeet ? formData.time : null
+        }).then(res => {
+            console.log(res)
+            toast.info('Check your mail for the confirmation');
+        }).catch(e => {
+            console.log(e)
+            toast.error('Failed to submit the form');
+        })
     };
 
     return (

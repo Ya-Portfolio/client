@@ -1,17 +1,21 @@
 import React from 'react';
 import './EmailComponent.css';
+import { DeleteOutline } from '@mui/icons-material';
 
-function EmailListComponent({ emails, onSelectEmail }) {
+function EmailListComponent({ emails, onSelectEmail, handleDelete }) {
+    // console.log(emails)
     return (
         <div className="emailListContainer">
             {emails.map((email) => (
-                <div key={email.id} className="emailItem" onClick={() => onSelectEmail(email)}>
-                    <div className="emailAvatar">{email.sender[0]}</div>
-                    <div className="emailDetails">
-                        <h3 className="emailSender">{email.sender}</h3>
-                        <p className="emailSnippet">{email.snippet}</p>
+                <div key={email._id} className="emailItem">
+                    <div className="emailAvatar">{email.name[0]}</div>
+                    <div className="emailDetails" onClick={() => onSelectEmail(email)}>
+                        <h3 className="emailSender">{email.name}</h3>
+                        <p className="emailSnippet">{email.email}</p>
                     </div>
-                    <div className="emailDate">{email.date}</div>
+                    <div className="emailDate" onClick={() => handleDelete(email._id)}>
+                        <DeleteOutline />
+                    </div>
                 </div>
             ))}
         </div>

@@ -4,12 +4,12 @@ import { BlockNoteView, darkDefaultTheme, lightDefaultTheme } from "@blocknote/m
 import "@blocknote/mantine/style.css";
 import { BlockNoteEditor } from '@blocknote/core';
 import React, { useEffect, useMemo, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { addBlog, defaultState, setInitialState } from '../../redux/blogSlice';
-import FileUpload from '../Components/fileupload/FileUpload';
-import { useLocation, useParams } from 'react-router-dom';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { toast } from 'sonner';
 import { useMediaQuery } from 'react-responsive';
+import axiosPrivate from '../../api/axios';
+import FileUpload from '../Components/fileupload/FileUpload';
+import { useSelector } from 'react-redux';
 
 const lightTheme = {
     colors: {
@@ -62,106 +62,76 @@ const customTheme = {
     dark: darkTheme,
 };
 
-const getInitialContent = (id) => {
-    const data = localStorage.getItem(id);
-    try {
-        return data ? JSON.parse(data) : null;
-    } catch (error) {
-        console.error("Error parsing JSON from localStorage:", error);
-        return null;
-    }
-};
-
-const saveToLocalStorage = (content, image, icon, id) => {
-    localStorage.setItem(id, JSON.stringify({
-        content,
-        coverImage: image,
-        iconImage: icon,
-    }));
-};
-
 export default function AdminBlog() {
+    const [upload, setUpload] = useState({ cover: false, icon: false });
     const color = useSelector(state => state.color.color);
-    const dispatch = useDispatch();
-    const [upload, setUpload] = useState({
-        cover: false,
-        icon: false,
-    });
     const [image, setImage] = useState(null);
     const [icon, setIcon] = useState(null);
     const location = useLocation();
     const params = useParams();
+    const navigate = useNavigate();
     const isMobile = useMediaQuery({ query: '(max-width: 500px)' });
 
-
-    useEffect(() => {
-        const handlePaddingChange = () => {
-            const block = document.querySelector('.ProseMirror');
-            if (block) {
-                block.style.padding = '11px'; 
-            }
-        };
-
-        if (isMobile) {
-            handlePaddingChange();
-        }
-
-    }, [isMobile]);
-
-    const getInitialContentNotDefault = () => {
-        if (location.state?.title && location.state.title.toLowerCase().includes('untitled')) {
-            return defaultState;
-        } else {
-            return [
-                { type: "heading", content: location.state?.title || "Untitled" },
-                { type: "paragraph" },
-                { type: "paragraph" },
-                { type: "paragraph" },
-            ];
-        }
+    const getInitialContent = () => {
+        return [
+            { type: "heading", content: location.state.title },
+            { type: "paragraph", content: "" },
+        ];
     };
 
     const editor = useMemo(() => {
-        return BlockNoteEditor.create({ initialContent: getInitialContentNotDefault() });
+        return BlockNoteEditor.create({
+            initialContent: getInitialContent(),
+        });
     }, []);
 
-    useEffect(() => {
-        const loadInitialHTML = async () => {
-            const content = getInitialContent(params.id);
-            if (content) {
-                const blocks = await editor.tryParseMarkdownToBlocks(content.content);
+    const loadContentFromDB = async () => {
+        try {
+            const res = await axiosPrivate.get(`/file/`, {
+                params: { _id: params.id }
+            });
+            const content = res.data?.data?.file;
+
+            if (content && content.content) {
+                console.log(content)
+                const blocks = JSON.parse(content.content);
                 editor.replaceBlocks(editor.document, blocks);
-                setImage(content.coverImage || null);
+                setImage(content.coverPhoto.location || null);
                 setIcon(content.iconImage || null);
                 setUpload({
-                    cover: !!content.coverImage,
+                    cover: !!content.coverPhoto.location,
                     icon: !!content.iconImage,
                 });
-            } else {
-                const defaultContent = getInitialContentNotDefault();
-                dispatch(setInitialState(defaultContent));
             }
-        };
-        loadInitialHTML();
-    }, [editor, dispatch, params.id]);
-
-    const handleEditorChange = async () => {
-        const html = await editor.blocksToHTMLLossy(editor.document);
-        dispatch(addBlog(html));
-        saveToLocalStorage(html, image, icon, params.id);
+        } catch (err) {
+            console.log(err);
+        }
     };
 
-    if (!editor) {
-        return 'loading';
-    }
+    useEffect(() => {
+        if (!location.state.isNew) {
+            loadContentFromDB();
+        }
+    }, [location.state.isNew]);
 
-    const handleFileChange = (event) => {
+    const handleFileChange = async (event) => {
         const file = event.target.files[0];
+        const formData = new FormData();
+        formData.append('_id', params.id);
+        formData.append('cover-photo', file);
+
+        await axiosPrivate.post('/file/cover-photo', formData, {
+            headers: { 'Content-Type': 'multipart/form-data' }
+        }).then(res => {
+            toast.message("Cover photo uploaded successfully");
+        }).catch(e => {
+            toast.error("Failed to upload cover photo");
+        });
+
         if (file) {
             const imageUrl = URL.createObjectURL(file);
             setImage(imageUrl);
             setUpload(prev => ({ ...prev, cover: true }));
-            saveToLocalStorage(editor.blocksToHTMLLossy(editor.document), imageUrl, icon, params.id);
         }
     };
 
@@ -171,15 +141,28 @@ export default function AdminBlog() {
             const imageUrl = URL.createObjectURL(file);
             setIcon(imageUrl);
             setUpload(prev => ({ ...prev, icon: true }));
-            saveToLocalStorage(editor.blocksToHTMLLossy(editor.document), image, imageUrl, params.id);
         }
     };
 
     const saveToCloud = async () => {
-        const html = await editor.blocksToHTMLLossy(editor.document);
-        saveToLocalStorage(html, image, icon, params.id);
-        toast.message("Saved Successfully");
+        const title = editor.document[0]?.content[0]?.text || null;
+        const jsonContent = JSON.stringify(editor.document);
+        await axiosPrivate.put(`/file/`, {
+            content: jsonContent,
+            type: "blogs",
+            title: title,
+            _id: params.id
+        }).then((res) => {
+            toast.message("Saved Successfully");
+            navigate(`/public/${params.id}`);
+        }).catch(err => {
+            console.log(err);
+        });
     };
+
+    if (!editor) {
+        return 'loading';
+    }
 
     return (
         <div className="bn-container adminBlog">
@@ -223,20 +206,7 @@ export default function AdminBlog() {
                     <button className="saveButton" onClick={saveToCloud}>Save to cloud</button>
                 </div>
             </div>
-
-            <BlockNoteView
-                editor={editor}
-                onChange={handleEditorChange}
-                data-theming-css-demo
-                theme={color === "#22303F" ? customTheme.dark : customTheme.light}
-            />
-
-            <div className="galleryContainer">
-                {
-                    location?.state?.category.toLowerCase() === 'blogs' ? 'Published on ' : location?.state?.category.toLowerCase() === 'projects' ? 'Last updated on ' : location?.state?.category.toLowerCase() === 'internships' ? 'Internship started on ' : ''
-                }
-                {location.state?.date}
-            </div>
+            <BlockNoteView theme={color === "#22303F" ? customTheme.dark : customTheme.light} editor={editor} />
         </div>
     );
 }

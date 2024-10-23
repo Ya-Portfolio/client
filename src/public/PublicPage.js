@@ -7,6 +7,7 @@ import { useParams } from 'react-router-dom';
 import { useCreateBlockNote } from '@blocknote/react';
 import FileUpload from '../admin/Components/fileupload/FileUpload';
 import { ToggleIconForAdmin } from "../admin/navbar/AdminNavbar";
+import axiosPrivate from "../api/axios";
 
 const lightTheme = {
     colors: {
@@ -60,21 +61,6 @@ const customTheme = {
     dark: darkTheme,
 };
 
-const getInitialContent = (id) => {
-    try {
-        if (id) {
-            const data = localStorage.getItem(id);
-            return data ? JSON.parse(data) : null;
-        }
-        else {
-            return null;
-        }
-    } catch (error) {
-        console.error("Error parsing JSON from localStorage:", error);
-        return null;
-    }
-};
-
 const dummyData = [
     [
         {
@@ -92,125 +78,70 @@ export default function PublicBlog() {
     const color = useSelector(state => state.color.color);
     const [image, setImage] = useState(null);
     const [icon, setIcon] = useState(null);
-    const [contentData, setContentData] = useState(dummyData);
+    const [contentData, setContentData] = useState([]);
     const params = useParams();
 
     const [upload, setUpload] = useState({
         cover: false,
         icon: false
     });
-    const [size, setSize] = useState()
-
-    useEffect(() => {
-        const handleResize = () => {
-            const iconSize = getComputedStyle(document.documentElement).getPropertyValue('--icon-size');
-            setSize(iconSize)
-        }
-
-        handleResize();
-        window.addEventListener('resize', handleResize);
-
-        return () => {
-            window.removeEventListener('resize', handleResize);
-        };
-    }, [])
-
-
-    useEffect(() => {
-        const data = getInitialContent(`${params.id ? params.id : null}`);
-        if (data) {
-            const { iconImage, coverImage, content } = data;
-            if (iconImage && coverImage) {
-                setIcon(iconImage);
-                setImage(coverImage);
-                setUpload({
-                    cover: true,
-                    icon: true
-                });
-            }
-            else if (iconImage || coverImage) {
-                if (coverImage) {
-                    setImage(coverImage);
-                    setIcon(null);
-                    setUpload({
-                        cover: true,
-                        icon: false
-                    })
-                }
-                else {
-                    setImage(null);
-                    setIcon(iconImage);
-                    setUpload({
-                        cover: false,
-                        icon: true
-                    })
-                }
-            }
-            else {
-                setUpload({
-                    cover: false,
-                    icon: false
-                })
-            }
-            if (content) {
-                setContentData(content);
-            }
-            else {
-                setContentData(dummyData);
-            }
-        }
-        else {
-            setIcon(null);
-            setImage(null);
-            setContentData(dummyData);
-            setUpload({
-                cover: null,
-                icon: null
-            });
-        }
-    }, [params.id]);
 
     const editor = useCreateBlockNote();
 
-    useEffect(() => {
-        async function loadInitialHTML() {
-            if (editor && typeof editor.tryParseHTMLToBlocks === 'function') {
-                try {
-                    const blocks = await editor.tryParseHTMLToBlocks(contentData ? contentData : dummyData);
-                    editor.replaceBlocks(editor.document, blocks);
-                }
-                catch (e) {
-                    console.log(e)
-                }
+    const getInitialContent = async (id) => {
+        try {
+            const res = await axiosPrivate.get('/file', { params: { _id: id } });
+            const fetchedImage = res.data?.data?.file?.coverImage?.location || null;
+            const fetchedIcon = res.data?.data?.file?.iconImage || null;
+            const fetchedContent = res.data?.data?.file?.content || '';
+
+            setImage(fetchedImage);
+            setIcon(fetchedIcon);
+
+            if (fetchedContent) {
+                // setContentData(JSON.parse(fetchedContent));
+                editor.replaceBlocks(editor.document, JSON.parse(fetchedContent));
+            } else {
+                setContentData(dummyData);
+                const blocks = await editor.tryParseHTMLToBlocks('');
+                editor.replaceBlocks(editor.document, blocks);
             }
+
+            setUpload({
+                cover: !!fetchedImage,
+                icon: !!fetchedIcon
+            });
+        } catch (error) {
+            console.error(error);
+            setContentData(dummyData);
         }
-        loadInitialHTML();
-    }, [editor, contentData]);
-    ;
+    };
 
+    useEffect(() => {
+        if (params.id) {
+            getInitialContent(params.id);
+        }
+    }, [params.id]);
 
-    if (!editor) {
-        return 'loading';
-    }
-
+    useEffect(() => {
+        if (!editor) {
+            return 'loading';
+        }
+    }, [editor]);
 
     return (
         <div className="publicPageContainer">
-            <ToggleIconForAdmin size={size} />
+            <ToggleIconForAdmin />
             <div className="bn-container PublicBlog">
                 <div className="coverImageContainer">
                     {upload.cover && <FileUpload image={image} isPublic={true} />}
-                    {
-                        upload.icon && <label htmlFor="file">
+                    {upload.icon && (
+                        <label htmlFor="file">
                             <div className="iconUpload">
-                                {
-                                    icon ?
-                                        <img src={icon} alt="Icon" className="iconImage" /> :
-                                        null
-                                }
+                                {icon ? <img src={icon} alt="Icon" className="iconImage" /> : null}
                             </div>
                         </label>
-                    }
+                    )}
                 </div>
 
                 <div className="nonEditableContent">
