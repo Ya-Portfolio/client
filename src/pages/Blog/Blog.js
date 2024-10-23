@@ -2,10 +2,17 @@ import React, { useEffect } from 'react'
 import './CardGrid.css';
 import Navbar from '../../components/navbar/Navbar'
 import axiosPrivate from '../../api/axios';
+import { useNavigate } from 'react-router-dom';
 
 function Blog() {
 
     const [cards, setCards] = React.useState([])
+    const navigate = useNavigate()
+
+    const navigateTo = (id) => {
+        // console.log(id)
+        navigate('/public/' + id)
+    }
 
     const fetchBlogs = async () => {
         try {
@@ -32,10 +39,8 @@ function Blog() {
                 {cards.map((card, index) => (
                     <div key={index} className="cardCard">
                         <h2 className="card-title nunito">{card.title}</h2>
-                        <div className="imageContainer">
-                            <img src={
-                                card.img || "https://images.unsplash.com/photo-1728998887922-596106e38ac7?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHx0b3BpYy1mZWVkfDMxfDZzTVZqVExTa2VRfHxlbnwwfHx8fHw%3D"
-                            } alt="" />
+                        <div className="imageContainer" onClick={() => navigateTo(card._id)}>
+                            <img src={card.coverPhoto.location} alt="" />
                         </div>
                     </div>
                 ))}
