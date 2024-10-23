@@ -32,10 +32,11 @@ body {
 
 
 
-  --bg-color: #22303F;
+  --bg-color: #22303f;
   --font-color: #E7E8E7;
   --bg-secondary-color: #AAAAAA;
   --font-secondary-color: #8FBFDA;
+  --box-shadow-color : 0 4px 12px #8fbfda14;
   --icon-size: 32px;
 }
 

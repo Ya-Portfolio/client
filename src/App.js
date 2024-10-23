@@ -12,13 +12,14 @@ import { Provider } from 'react-redux';
 import store from './redux/store';
 import AdminContent from './admin/AdminContent/AdminContent';
 import AdminBlog from './admin/AdminContent/AdminBlog';
-import { StickyScrollRevealDemo } from './utils/My';
 import AdminDocUpload from './admin/AdminDocUpload/AdminDocUpload';
 import AdminFile from './admin/AdminFile/AdminFile';
 import PublicBlog from './public/PublicPage';
 import MainLanding from './admin/mainlanding/MainLanding';
 import AdminNotesContent from './admin/notes/AdminNotesContent';
 import EmailApp from './admin/mail/EmailApp';
+// import AdminSkills from './admin/adminSkills/AdminSkills';
+import Skill from './admin/Skills/Skill';
 
 
 function App() {
@@ -47,6 +48,9 @@ function App() {
             <Route path='email' element={<EmailApp />} />
             <Route path='documents' element={<AdminDocUpload />} />
             <Route path='note' element={<AdminNotesContent />} />
+            <Route path='Addskill/:id' element={<Skill />} />
+            {/* <Route path='skills/:id' element={<Skill />} /> */}
+
             <Route path='document/:id' element={<AdminFile />} />
             <Route path='edit/:id' element={<AdminBlog />} />
             <Route path=':category/:id' element={<AdminBlog />} />

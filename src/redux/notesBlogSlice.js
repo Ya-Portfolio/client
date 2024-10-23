@@ -22,70 +22,87 @@ const notesBlogSlice = createSlice({
     addNote: (state, action) => {
       state.categories.notes.push(action.payload);
     },
+    addNoteInitialState: (state, action) => {
+      state.categories.notes = action.payload;
+    },
     addInternship: (state, action) => {
       state.categories.internships.push(action.payload);
     },
     updateBlogTitle: (state, action) => {
-      const { index, title } = action.payload;
-      if (state.categories.blogs[index]) {
-        state.categories.blogs[index].title = title;
+      const { id, title } = action.payload;
+      const blog = state.categories.blogs.find((blog) => blog.id === id);
+      if (blog) {
+        blog.title = title;
       }
     },
+    addInitialState: (state, action) => {
+      const { category, data } = action.payload;
+      console.log(category, data);
+      state.categories[category] = data;
+    },
     updateInternshipTitle: (state, action) => {
-      const { index, title } = action.payload;
-      if (state.categories.internships[index]) {
-        state.categories.internships[index].title = title;
+      const { id, title } = action.payload;
+      const internship = state.categories.internships.find((internship) => internship.id === id);
+      if (internship) {
+        internship.title = title;
       }
     },
     updateProjectTitle: (state, action) => {
-      const { index, title } = action.payload;
-      if (state.categories.projects[index]) {
-        state.categories.projects[index].title = title;
+      const { id, title } = action.payload;
+      const project = state.categories.projects.find((project) => project.id === id);
+      if (project) {
+        project.title = title;
       }
     },
     updateNoteTitle: (state, action) => {
-      const { index, title } = action.payload;
-      if (state.categories.notes[index]) {
-        state.categories.notes[index].title = title;
+      const { id, title } = action.payload;
+      const note = state.categories.notes.find((note) => note.id === id);
+      if (note) {
+        note.title = title;
       }
     },
     deleteBlog: (state, action) => {
-      state.categories.blogs.splice(action.payload, 1);
+      const { id } = action.payload;
+      state.categories.blogs = state.categories.blogs.filter((blog) => blog.id !== id);
     },
     deleteInternship: (state, action) => {
-      state.categories.internships.splice(action.payload, 1);
+      const { id } = action.payload;
+      state.categories.internships = state.categories.internships.filter((internship) => internship.id !== id);
     },
     deleteProject: (state, action) => {
-      state.categories.projects.splice(action.payload, 1);
+      const { id } = action.payload;
+      state.categories.projects = state.categories.projects.filter((project) => project.id !== id);
     },
     deleteNote: (state, action) => {
-      state.categories.notes.splice(action.payload, 1);
+      const { id } = action.payload;
+      state.categories.notes = state.categories.notes.filter((note) => note.id !== id);
     },
     updateBlogDate: (state, action) => {
-      const { index, date } = action.payload;
-      if (state.categories.blogs[index]) {
-        // console.log(state.categories.blogs[index])
-        // console.log(state.categories.blogs[index].date)
-        // console.log(date)
-        state.categories.blogs[index].date = date;
+      const { id, date } = action.payload;
+      const blog = state.categories.blogs.find((blog) => blog.id === id);
+      if (blog) {
+        blog.date = date;
       }
     },
     updateProjectDate: (state, action) => {
-      const { index, date } = action.payload;
-      if (state.categories.projects[index]) {
-        state.categories.projects[index].date = date;
+      const { id, date } = action.payload;
+      const project = state.categories.projects.find((project) => project.id === id);
+      if (project) {
+        project.date = date;
       }
     },
     updateNoteDate: (state, action) => {
-      const { index, date } = action.payload;
-      if (state.categories.notes[index]) {
-        state.categories.notes[index].date = date;
+      const { id, date } = action.payload;
+      const note = state.categories.notes.find((note) => note.id === id);
+      if (note) {
+        note.date = date;
       }
     },
     updateInternshipDate: (state, action) => {
-      const { index, date } = action.payload;
-      if (state.categories.internships[index]) {
-        state.categories.internships[index].date = date;
+      const { id, date } = action.payload;
+      const internship = state.categories.internships.find((internship) => internship.id === id);
+      if (internship) {
+        internship.date = date;
       }
     },
   },
@@ -104,11 +121,12 @@ export const {
   deleteProject,
   deleteInternship,
   deleteNote,
+  addNoteInitialState,
   updateBlogDate,
   updateProjectDate,
+  addInitialState,
   updateNoteDate,
   updateInternshipDate,
 } = notesBlogSlice.actions;
-
 
 export default notesBlogSlice.reducer;

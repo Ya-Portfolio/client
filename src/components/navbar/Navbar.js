@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import CustomMenu from './CustomMenu';
 import { ChevronDown, ChevronRight } from 'lucide-react';
 import Button from './Button';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 function Navbar({ title, color = 'light', value, isActive }) {
   const [menuOpen, setMenuOpen] = React.useState(false);
@@ -111,6 +111,13 @@ function Navbar({ title, color = 'light', value, isActive }) {
   //   return validRoutes.includes(location.pathname) || validRoutes.includes(location.pathname + location.hash);
   // };
 
+  const navigateToID = (id) => {
+    const element = document.getElementById(id);
+    element?.scrollIntoView({ behavior: 'smooth' });
+    setMenuOpen(!menuOpen)
+  }
+
+
   return (
     <>
       <nav className={title === 'CG' ? "" : "sticky"}>
@@ -132,16 +139,31 @@ function Navbar({ title, color = 'light', value, isActive }) {
       <div ref={menuRef} className={`menuBar nunito ${menuOpen ? '' : 'hidden'}`}>
         {isScrolled && <CustomMenu clickHandler={clickHandler} color={color} title={title} />}
         <ul>
-          <li>
-            <span onClick={toggleMode}>{isDown ? <ChevronDown /> : <ChevronRight />}</span> About
+          <li onClick={toggleMode}>
+            <span > {isDown ? <ChevronDown /> : <ChevronRight />}</span>
+            <Link to="/">Home</Link>
             <ul className={`dropdown ${isDown ? 'open' : ''}`}>
-              <li>Education</li>
-              <li>Skills</li>
-              <li>Projects</li>
+              <li onClick={() => { navigateToID('about') }}>About</li>
+              <li
+                onClick={() => {
+                  navigateToID('achievements');
+                }}
+              >Achievements</li>
+              <li
+                onClick={() => {
+                  navigateToID('projects');
+                }}
+              >
+                Projects
+              </li>
             </ul>
           </li>
-          <li><span><ChevronRight /></span>Projects</li>
-          <li><span><ChevronRight /></span>Contact</li>
+          <li><span><ChevronRight /></span>
+            <Link to="/blog">Blogs</Link>
+          </li>
+          <li><span><ChevronRight /></span>
+            <Link to="/contact">Contact</Link>
+          </li>
         </ul>
       </div>
     </>

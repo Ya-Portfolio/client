@@ -29,14 +29,16 @@ function AdminNavbar() {
         if (color === "#22303F") {
             document.documentElement.style.setProperty('--bg-color', "#22303F")
             document.documentElement.style.setProperty('--font-color', "#E7E8E7")
-            document.documentElement.style.setProperty('--bg-secondary-color', "#AAAAAA")
+            document.documentElement.style.setProperty('--bg-secondary-color', "#8FBFDA")
             document.documentElement.style.setProperty('--font-secondary-color', "#8FBFDA")
+            document.documentElement.style.setProperty('--box-shadow-color', "0 2px 12px #8fbfda14")
         }
         else {
             document.documentElement.style.setProperty('--bg-color', "#E7E8E7")
             document.documentElement.style.setProperty('--font-color', "#22303F")
             document.documentElement.style.setProperty('--bg-secondary-color', "#AAAAAA")
             document.documentElement.style.setProperty('--font-secondary-color', "#8FBFDA")
+            document.documentElement.style.setProperty('--box-shadow-color', "0 4px 12px rgba(0, 0, 0, 0.1)")
         }
     }, [color])
 
@@ -58,10 +60,10 @@ function AdminNavbar() {
                         <Link to="/admin/documents" style={{ textDecoration: 'none' }}> <File size={size} style={{ stroke: color }} /> </Link>
                     </div>
                     <div className="adminNavbarItems">
-                        <Newspaper size={size} style={{ stroke: color }} />
+                        <Link to="/admin/note" style={{ textDecoration: 'none' }}> <Newspaper size={size} style={{ stroke: color }} /> </Link>
                     </div>
                     <div className="adminNavbarItems">
-                        <Contact size={size} style={{ stroke: color }} />
+                        <Link to="/admin/email" style={{ textDecoration: 'none' }}> <Contact size={size} style={{ stroke: color }} /> </Link>
                     </div>
                 </div>
                 <div className="adminNavbarContent adminNavbarContent3">

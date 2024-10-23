@@ -2,14 +2,16 @@ import { configureStore } from "@reduxjs/toolkit";
 import colorSlice from './slice'
 import blogSlice from './blogSlice'
 import notesBlog from './notesBlogSlice'
+import imgBlog from './photoSlice'
 
 const store = configureStore({
     reducer: {
         color: colorSlice,
         blogs: blogSlice,
         notes: notesBlog,
+        images: imgBlog,
     },
-    
+
     middleware: (getDefaultMiddleware) =>
         getDefaultMiddleware({
             serializableCheck: {

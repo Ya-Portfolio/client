@@ -1,34 +1,38 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './mainLandingpage.css';
 import AdminInternships from '../adminInternship/AdminInternships';
 import EducationComponent from './EducationComponent';
+import AdminSkills from '../adminSkills/AdminSkills';
+import axiosPrivate from '../../api/axios';
 
 function MainLanding() {
-    const [name, setName] = useState('John Doe');
-    const [about, setAbout] = useState('Software Engineer passionate about building AI-based solutions.');
+    const [name, setName] = useState('');
+    const [about, setAbout] = useState('');
     const [isEditingProfile, setIsEditingProfile] = useState(false);
-
-    const [education, setEducation] = useState([
-        { id: 1, schoolName: 'XYZ University', course: 'BE Computer Science', percentage: '85%', marks: '1700/2000' },
-        { id: 2, schoolName: 'ABC School', course: 'SSLC', percentage: '90%', marks: '450/500' },
-    ]);
-    const [editingEducationId, setEditingEducationId] = useState(null);
-
+    const [education, setEducation] = useState([]);
+    const [isAddingAchievement, setIsAddingAchievement] = useState(false);
     const handleEditProfile = () => setIsEditingProfile(!isEditingProfile);
     const handleSaveProfile = () => setIsEditingProfile(false);
 
-    const handleAddEducation = () => {
-        const newEdu = { id: Date.now(), schoolName: '', course: '', percentage: '', marks: '' };
-        setEducation([...education, newEdu]);
-        setEditingEducationId(newEdu.id);
-    };
+    const fetchData = async () => {
+        try {
+            const nameAbout = await axiosPrivate.get('/profile');
+            const data = nameAbout.data.data;
+            console.log(data)
+            setName(data.name);
+            setEducation(data.education);
 
-    const handleEditEducation = (id) => setEditingEducationId(id);
-    const handleDeleteEducation = (id) => setEducation(education.filter(edu => edu.id !== id));
-    const handleSaveEducation = (id, updatedEducation) => {
-        setEducation(education.map(edu => (edu.id === id ? updatedEducation : edu)));
-        setEditingEducationId(null);
-    };
+            setAbout(data.about);
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+
+    useEffect(() => {
+        
+        fetchData()
+    }, [])
 
     return (
         <div className='adminMainLandingPage'>
@@ -59,9 +63,19 @@ function MainLanding() {
                         </>
                     )}
                 </div>
-                <AdminInternships />
+                <div className="adminaddbtns">
+                    <h2 className={isAddingAchievement ? '' : "nowWorkingOn"} onClick={() => setIsAddingAchievement(false)}>Skills</h2>
+                    <h2 className={isAddingAchievement ? "nowWorkingOn" : ""} onClick={() => setIsAddingAchievement(true)}>Achievements</h2>
+                </div>
+                {
+                    isAddingAchievement ? (
+                        <AdminInternships />
+                    ) : (
+                        <AdminSkills />
+                    )
+                }
             </div>
-            <EducationComponent />
+            <EducationComponent education = {education}/>
         </div>
     );
 }

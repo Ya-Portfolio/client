@@ -1,11 +1,11 @@
 import React, { useEffect, useRef, useState } from 'react';
 import './AdminFile.css';
-import { Check, Edit, File, FileArchiveIcon, Plus, X } from 'lucide-react';
+import { Check, Edit, File, Plus, X } from 'lucide-react';
 import AddIcon from '../Components/addIcon/AddIcon';
 import { DeleteOutline } from '@mui/icons-material';
 
 function AdminFile() {
-  const [cards, setCards] = useState([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]);
+  const [cards, setCards] = useState([]);
   const [imageUrls, setImageUrls] = useState(Array(15).fill(''));
   const titleRefs = useRef(Array.from({ length: 10 }, () => React.createRef()));
   const descriptionRefs = useRef(Array.from({ length: 10 }, () => React.createRef()));
@@ -39,7 +39,7 @@ function AdminFile() {
 
   const deleteFile = (i) => {
     const newCards = cards.filter((card, index) => index !== i);
-    const newImageUrls = imageUrls.filter((_, index) => index !== i); // Remove corresponding image URL
+    const newImageUrls = imageUrls.filter((_, index) => index !== i); 
     setCards(newCards);
     setImageUrls(newImageUrls);
   }

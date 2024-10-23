@@ -8,12 +8,12 @@ import {
 } from '../../redux/notesBlogSlice';
 import { v4 as uuidv4 } from 'uuid';
 import { EllipsisVertical } from 'lucide-react';
-import { ArrowRightAltRounded } from '@mui/icons-material';
+import { ArrowRightAltRounded, Category } from '@mui/icons-material';
 import { useNavigate } from 'react-router-dom';
 import '../AdminContent/AdminActualContent.css'
 
 function AdminInternships() {
-    const internships = useSelector((state) => state.notes.categories.internships); // Assuming internships are stored here
+    const internships = useSelector((state) => state.notes.categories.internships);
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const cardsRefs = useRef([]);
@@ -34,7 +34,7 @@ function AdminInternships() {
         });
         const newInternship = {
             id: uuidv4(),
-            title: 'Untitled Internship',
+            title: 'Untitled achievement',
             date: today,
         };
 
@@ -84,11 +84,12 @@ function AdminInternships() {
 
     const NavigateToInternship = (index) => {
         const internshipId = internships[index].id;
-        navigate(`/admin/internships/${internshipId}`, {
+        navigate(`/admin/achievemnets/${internshipId}`, {
             state: {
                 internshipId: internshipId,
                 title: internships[index].title,
-                date: internships[index].date
+                date: internships[index].date,
+                category : 'achievement'
             }
         });
     };
@@ -96,9 +97,8 @@ function AdminInternships() {
     return (
         <div className="adminNoteCards">
             <div className="adminNoteHeader">
-                <h2>Internships</h2>
                 <button className="adminBtn" onClick={addAndScrollEventHandler}>
-                    Add new internship
+                    Add new Achievements
                 </button>
             </div>
             <div className="adminBlogsContent">

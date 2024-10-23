@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import EmailListComponent from './EmailListComponent';
-import EmailDetailComponent from './EmailDetailComponent';
 import './EmailComponent.css';
+import { toast } from 'sonner';
+import EmailDetailComponent from '../mail/EmailDetailComponent';
 
 const dummyEmails = [
     {
@@ -18,7 +19,6 @@ const dummyEmails = [
         content: 'Don’t forget the meeting tomorrow at 10 AM. We need to finalize the designs before the presentation.',
         date: 'Oct 19, 2024'
     },
-    // More dummy emails...
 ];
 
 function EmailApp() {
@@ -29,12 +29,10 @@ function EmailApp() {
     };
 
     const handleApprove = () => {
-        alert('Email approved!');
+        toast.success('Meeting approved successfully');
     };
 
-    const handleReply = () => {
-        alert('Replying to email...');
-    };
+
 
     return (
         <div className="adminemailcontainer">
@@ -46,7 +44,6 @@ function EmailApp() {
                     <EmailDetailComponent
                         selectedEmail={selectedEmail}
                         onApprove={handleApprove}
-                        onReply={handleReply}
                     />
                 </div>
             </div>

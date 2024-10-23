@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './Form.css';
 import { toast } from 'sonner';
+import axiosPrivate from '../../api/axios';
 
 const ContactForm = () => {
     const [formData, setFormData] = useState({
@@ -20,9 +21,14 @@ const ContactForm = () => {
         }));
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async(e) => {
         e.preventDefault();
         console.log(formData);
+        await axiosPrivate.post('/contact', {
+            ...formData,
+            meetDate : formData.date,
+            meetTime
+        });
         toast.info('Check your mail for the confirmation');
     };
 

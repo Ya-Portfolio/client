@@ -43,7 +43,7 @@
     padding: 24px;
     height: 500px;
     overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--box-shadow-color);
 }
 
 .actualAdminContent .adminNoteCards:last-child {
@@ -73,6 +73,7 @@
         transition: background-color 0.3s ease, box-shadow 0.3s ease;
         text-decoration: none;
         user-select: none;
+        width: 50%;
     }
 
     button:hover {
@@ -201,6 +202,7 @@
 .dropdown-menu button:hover {
     background-color: #f0f0f0;
 }
+
 
 @media only screen and (max-width: 500px) {
     .adminDashboard {

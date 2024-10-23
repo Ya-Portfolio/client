@@ -1,3 +1,114 @@
-.adminNoteContainers {
-    margin: 50px 0 0 150px;
+.admin-notes-container {
+    margin: 100px 0 0 130px;
+    padding: 20px;
+    width: 85%;
+
+
+    .admin-notes-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        h2 {
+            font-size: 52px;
+        }
+    }
+
+    .add-note-btn {
+        color: #000;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        background-color: var(--font-secondary-color);
+    }
+
+    .notes-grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        justify-content: start;
+        margin-top: 30px;
+    }
+
+    .note-card {
+        width: 250px;
+        height: 140px;
+        background-color: #fff;
+        border-radius: 20px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        transition: box-shadow 0.3s ease, transform 0.3s ease;
+        cursor: pointer;
+        user-select: none;
+        position: relative;
+    }
+
+    .note-card:hover {
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        transform: translateY(-5px);
+    }
+
+    .note-title {
+        font-size: 18px;
+        font-weight: 600;
+        margin-bottom: 8px;
+        text-align: center;
+        cursor: pointer;
+    }
+
+    .note-title-input {
+        text-align: center;
+        width: 100%;
+        border: none;
+        font-size: 18px;
+        font-weight: 600;
+        outline: none;
+    }
+
+    .note-date {
+        font-size: 14px;
+        color: #888;
+        text-align: center;
+    }
+
+    .note-actions {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .action-btn {
+        background: none;
+        border: none;
+        cursor: pointer;
+        width: 100%;
+        
+        svg{
+            width: 100%;
+        }
+    }
+
+    .menu-action {
+        position: absolute;
+        top: 8%;
+        right: 3%;
+        width: auto;
+    }
+
+
+
+    .dropdown-menu {
+        position: absolute;
+        bottom: 20px;
+        right: 20px;
+        background-color: white;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        border-radius: 5px;
+        padding: 10px;
+    }
+
 }
