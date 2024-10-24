@@ -23,14 +23,14 @@ const ContactForm = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log(formData);
+        // console.log(formData);
         await axiosPrivate.post('/contact', {
             ...formData,
             message: formData.brief,
             meetDate: formData.wantGMeet ? formData.date : null,
             meetTime: formData.wantGMeet ? formData.time : null
         }).then(res => {
-            console.log(res)
+            // console.log(res)
             toast.info('Check your mail for the confirmation');
         }).catch(e => {
             console.log(e)

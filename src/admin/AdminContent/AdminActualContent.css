@@ -38,10 +38,10 @@
 } */
 
 .adminNoteCards {
-    width: 450px;
+    /* width: 450px; */
     border-radius: 20px;
     padding: 24px;
-    height: 500px;
+    /* height: 500px; */
     overflow: hidden;
     box-shadow: var(--box-shadow-color);
 }
@@ -93,10 +93,19 @@
     }
 }
 
+.adminMainLandingPage .adminNoteHeader button {
+    width: 100%;
+}
+
+
+
+
 .adminBlogsContent {
     margin-top: 24px;
     overflow-y: auto;
-    height: 84%;
+    height: 100%;
+    padding-bottom: 30px;
+
 
     .adminBlogContainer {
         padding: 12px;
@@ -198,6 +207,7 @@
     text-align: left;
     width: 100%;
 }
+
 
 .dropdown-menu button:hover {
     background-color: #f0f0f0;

@@ -109,17 +109,17 @@ const CardCarousel = ({ setValue, handleScrolling, cardItems }) => {
   return (
     <div className="carousel" onWheel={handleScrolling}>
       {cardItems.map((card, index) => (
-        <div className="card" key={card.id} style={{ zIndex: 10 - 2 * index }}>
+        <div className="card" key={card._id} style={{ zIndex: 10 - 2 * index }}>
           <h2>{card.title}</h2>
           <div className="tags">
-            {card.tags.map((tag) => (
+            {card.tags?.map((tag) => (
               <span key={tag}>{tag}</span>
             ))}
           </div>
-          <img src={card.image} alt="" />
-          <p>{card.copy}</p>
+          <img src={card?.coverPhoto?.location} alt="" />
+          {/* <p>{card.desc}</p> */}
           <div className="visit nunito">
-            <Link to={`/project`}> Read More</Link>
+            <Link to={`/public/${card._id}`}> Read More</Link>
           </div>
         </div>
       ))}

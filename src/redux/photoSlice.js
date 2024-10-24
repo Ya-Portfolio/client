@@ -1,8 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-export const defaultState = [
-
-];
+export const defaultState = [];
 
 
 const imgSlice = createSlice({
@@ -18,7 +16,7 @@ const imgSlice = createSlice({
         },
 
         deleteImage: (state, action) => {
-            state.images = state.images.filter(image => image.id === action.payload.id);
+            state.images = state.images.filter(image => image.id !== action.payload.id);
         },
 
     },

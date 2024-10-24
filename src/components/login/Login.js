@@ -17,7 +17,7 @@ function Login() {
                 return
             }
             const response = await axiosPrivate.post('/authenticate', { password: password.current.value })
-            console.log(response.data)
+            // console.log(response.data)
             toast.success('Logged in successfully')
             navigate('/admin')
 

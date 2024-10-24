@@ -174,7 +174,7 @@ export default function AdminBlog() {
                 )}
             </div>
             <div className="coverImageContainer">
-                {upload.cover && <FileUpload handleFileChange={handleFileChange} image={image} />}
+                {upload.cover && <FileUpload handleFileChange={handleFileChange} image={image} type={location.state?.category} />}
                 {upload.icon && (
                     <label htmlFor="icon">
                         <div className={upload.cover ? "iconUpload" : "iconUpload adminTopIcon"}>

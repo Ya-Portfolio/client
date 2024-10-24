@@ -25,13 +25,9 @@ function AdminSkills() {
 
     const fetchSkills = async () => {
         try {
-            const response = await axiosPrivate.get('/file', {
-                params: {
-                    type: 'skills'
-                }
-            })
+            const response = await axiosPrivate.get('/skill')
             console.log(response)
-            setSkills(response.data?.data?.file || [])
+            setSkills(response.data?.data?.skills || [])
         } catch (e) {
             console.log(e)
         }
@@ -41,18 +37,32 @@ function AdminSkills() {
         fetchSkills()
     }, [])
 
-    const NavigateToSkill = (index) => {
-        navigate(`/admin/Addskill/${skills[index].id}`, { state: { isNewOne: false } })
+    const NavigateToSkill = (id) => {
+        const skill = skills.find(obj => obj._id === id)
+        navigate(`/admin/Addskill/${id}`, { state: { title: skill.name, isNewOne: false, gallery: skill.gallery } })
     }
 
-    const handleDelete = (index) => {
-        setSkills(skills.filter((_, i) => i !== index))
+    const handleDelete = async (id) => {
+        await axiosPrivate.delete('/skill', {
+            params: {
+                ObjectId: id
+            }
+        }).then(res => {
+            console.log(res)
+            toast.success("Skills Deleted Successfully")
+            fetchSkills()
+        }).catch(e => {
+            console.log(e)
+            toast.error("Skill deletion failed")
+        }).finally(() => {
+            setDropdownOpen(null)
+        })
     }
 
 
     const addAndScrollEventHandler = async () => {
         setNewSkillTitle(true)
-        await axiosPrivate.post('/file', { type: 'skills' })
+        await axiosPrivate.post('/skill')
             .then(res => {
                 console.log(res)
                 setId(res.data?.data?._id)
@@ -80,41 +90,39 @@ function AdminSkills() {
             </div>
             <div className="adminBlogsContent">
                 {skills.map((skill, index) => (
-                    <>
-                        <div className="adminBlogContainer" key={skill.id} ref={cardsRefs.current[index]}>
-                            <div className="adminNoteContainerComplete">
-                                <div className="adminNotePrimaryChild">
+                    <div className="adminBlogContainer" key={Math.random()} ref={cardsRefs.current[index]}>
+                        <div className="adminNoteContainerComplete">
+                            <div className="adminNotePrimaryChild">
 
-                                    <h3 className="adminNoteHeader nunito">
-                                        {skill.title}
-                                    </h3>
-                                    <p className="adminNoteDate nunito">
-                                        Skill added on{' '}
-                                        {
-                                            new Date(skill.date).toLocaleDateString('en-GB', {
-                                                day: 'numeric',
-                                                month: 'long',
-                                                year: 'numeric',
-                                            })
-                                        }
-                                    </p>
-                                </div>
-                                <div className="adminNavbarSecondaryChild">
-                                    <button className="adminBtn" onClick={() => handleDropdownToggle(index)}>
-                                        <EllipsisVertical size={20} />
-                                    </button>
-                                    <button className="adminBtn" onClick={() => NavigateToSkill(index)}>
-                                        <ArrowRightAltRounded size={20} />
-                                    </button>
-                                    {dropdownOpen === index && (
-                                        <div className="dropdown-menu">
-                                            <button onClick={() => handleDelete(index)}>Delete</button>
-                                        </div>
-                                    )}
-                                </div>
+                                <h3 className="adminNoteHeader nunito">
+                                    {skill.name}
+                                </h3>
+                                <p className="adminNoteDate nunito">
+                                    Skill added on{' '}
+                                    {
+                                        new Date(skill.date).toLocaleDateString('en-GB', {
+                                            day: 'numeric',
+                                            month: 'long',
+                                            year: 'numeric',
+                                        })
+                                    }
+                                </p>
+                            </div>
+                            <div className="adminNavbarSecondaryChild">
+                                <button className="adminBtn" onClick={() => handleDropdownToggle(index)}>
+                                    <EllipsisVertical size={20} />
+                                </button>
+                                <button className="adminBtn" onClick={() => NavigateToSkill(skill._id)}>
+                                    <ArrowRightAltRounded size={20} />
+                                </button>
+                                {dropdownOpen === index && (
+                                    <div className="dropdown-menu">
+                                        <button onClick={() => handleDelete(skill._id)}>Delete</button>
+                                    </div>
+                                )}
                             </div>
                         </div>
-                    </>
+                    </div>
                 ))}
                 {
                     newSkillTitle && (

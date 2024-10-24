@@ -1,9 +1,9 @@
 import React from 'react';
 import '../fileupload/FileUpload.css';
 
-function FileUpload({ image, handleFileChange, isPublic = false }) {
+function FileUpload({ image, handleFileChange, isPublic = false, type }) {
     return (
-        <form className="file-upload-form">
+        <form className="file-upload-form" style={type === 'projects'  ? { height: '800px' } : {}}>
             {image ? (
                 <label htmlFor='file'>
                     <div className="uploaded-image-container">

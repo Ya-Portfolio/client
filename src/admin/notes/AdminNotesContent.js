@@ -1,79 +1,63 @@
 import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import { EllipsisVertical } from 'lucide-react';
-import { ArrowRightAltRounded } from '@mui/icons-material';
-import {
-    addNote,
-    deleteNote,
-    updateNoteTitle,
-    updateNoteDate,
-    addNoteInitialState,
-} from '../../redux/notesBlogSlice';
+import { Check, ArrowRightAltRounded } from '@mui/icons-material';
 import { useNavigate } from 'react-router-dom';
 import './AdminNotesContent.css';
 import axiosPrivate from '../../api/axios';
 
 function AdminNotesContent() {
-    const notes = useSelector((state) => state.notes.categories.notes);
-    const [isEditing, setIsEditing] = useState(null);
+    const [notes, setNotes] = useState([]);
     const [dropdownOpen, setDropdownOpen] = useState(null);
-    const [dateEditingIndex, setDateEditingIndex] = useState(null);
-    const [selectedDate, setSelectedDate] = useState('');
-    const dispatch = useDispatch();
+    const [newNoteTitle, setNewNoteTitle] = useState('');
+    const [isAddingNote, setIsAddingNote] = useState(false);
     const navigate = useNavigate();
 
-    const addAndScrollEventHandler = async () => {
+    const fetchNotes = async () => {
         try {
-            const today = new Date().toLocaleDateString('en-GB', {
-                day: 'numeric',
-                month: 'long',
-                year: 'numeric',
-            });
-
-            await axiosPrivate
-                .post('/file', {
+            const response = await axiosPrivate.get('/file/short-details', {
+                params: {
                     type: 'notes',
-                })
-                .then((res) => {
-                    const uniqueId = res.data?.data?._id;
-                    const newNote = {
-                        id: uniqueId,
-                        title: 'Untitled note',
-                        date: today,
-                    };
-                    dispatch(addNote(newNote));
-                })
-                .catch((e) => {
-                    console.log(e);
-                });
+                },
+            });
+            const notesArr = response.data?.data?.files || [];
+            setNotes(notesArr);
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
+    useEffect(() => {
+        fetchNotes();
+    }, []);
+
+    const addAndScrollEventHandler = async () => {
+        setIsAddingNote(true);
+        setNewNoteTitle('');
+    };
+
+    const handleAddNote = async () => {
+        try {
+            const res = await axiosPrivate.post('/file', { type: 'notes' });
+            const uniqueId = res.data?.data?._id;
+
+            const newNote = {
+                _id: uniqueId,
+                title: newNoteTitle || 'Untitled note',
+                date: new Date().toLocaleDateString('en-GB', {
+                    day: 'numeric',
+                    month: 'long',
+                    year: 'numeric',
+                }),
+            };
+            setNotes((prevNotes) => [...prevNotes, newNote]);
+            setIsAddingNote(false);
         } catch (e) {
             console.log(e);
         }
     };
 
-    const handleTitleChange = (e, noteId) => {
-        const updatedTitle = e.target.value;
-        dispatch(updateNoteTitle({ id: noteId, title: updatedTitle }));
-    };
-
-    const handleDateChange = (index) => {
-        setDateEditingIndex(index);
-        setSelectedDate(notes[index].date);
-        setDropdownOpen(null);
-    };
-
-    const handleSaveDate = (noteId) => {
-        dispatch(updateNoteDate({ id: noteId, date: selectedDate }));
-        setDateEditingIndex(null);
-    };
-
-    const handleDropdownToggle = (index) => {
-        setDropdownOpen(dropdownOpen === index ? null : index);
-        setDateEditingIndex(null);
-    };
-
     const handleDelete = async (noteId) => {
-        dispatch(deleteNote({ id: noteId }));
+        setNotes((prevNotes) => prevNotes.filter(note => note._id !== noteId));
         setDropdownOpen(null);
 
         try {
@@ -87,31 +71,16 @@ function AdminNotesContent() {
         }
     };
 
-    const fetchNotes = async () => {
-        try {
-            const response = await axiosPrivate.get('/file/short-details', {
-                params: {
-                    type: 'notes',
-                },
-            });
-            const notesArr = response.data?.data?.files;
-            dispatch(addNoteInitialState(notesArr));
-        } catch (error) {
-            console.log(error);
-        }
+    const handleDropdownToggle = (index) => {
+        setDropdownOpen(dropdownOpen === index ? null : index);
     };
 
-    useEffect(() => {
-        fetchNotes();
-    }, []);
-
-    const navigateToBlog = (index) => {
-        const noteId = notes[index].id;
-        navigate(`/admin/notes/${noteId}`, {
+    const navigateToBlog = (_id) => {
+        navigate(`/admin/notes/${_id}`, {
             state: {
-                noteId: noteId,
-                title: notes[index].title,
-                date: notes[index].date,
+                noteId: _id,
+                title: notes.find(note => note._id === _id)?.title,
+                date: notes.find(note => note._id === _id)?.date,
                 category: 'notes',
             },
         });
@@ -126,53 +95,48 @@ function AdminNotesContent() {
                 </button>
             </div>
             <div className="notes-grid">
+                {isAddingNote && (
+                    <div className="note-card">
+                        <input
+                            type="text"
+                            value={newNoteTitle}
+                            onChange={(e) => setNewNoteTitle(e.target.value)}
+                            onBlur={handleAddNote}
+                            placeholder='Enter note Title'
+                            className="note-title-input"
+                            autoFocus
+                        />
+                        <button className="action-btn" onClick={handleAddNote}>
+                            <Check size={20} />
+                        </button>
+                    </div>
+                )}
                 {notes.length > 0 ? (
                     notes.map((note, index) => (
                         <div className="note-card" key={note._id}>
                             <div className="note-content">
-                                {isEditing === note._id ? (
-                                    <input
-                                        type="text"
-                                        value={note.title}
-                                        onChange={(e) => handleTitleChange(e, note.id)}
-                                        onBlur={() => setIsEditing(null)}
-                                        className="note-title-input"
-                                        autoFocus
-                                    />
-                                ) : (
-                                    <h3 className="note-title" onClick={() => setIsEditing(note.id)}>
-                                        {note.title || 'Untitled note'}
-                                    </h3>
-                                )}
+                                <h3 className="note-title">
+                                    {note.title || 'Untitled note'}
+                                </h3>
                                 <p className="note-date">
                                     Last updated on{' '}
-                                    {dateEditingIndex === note._id ? (
-                                        <input
-                                            type="date"
-                                            value={selectedDate}
-                                            onChange={(e) => setSelectedDate(e.target.value)}
-                                            onBlur={() => handleSaveDate(note.id)}
-                                        />
-                                    ) : (
-                                        new Date(note.date).toLocaleDateString('en-GB', {
-                                            day: 'numeric',
-                                            month: 'long',
-                                            year: 'numeric',
-                                        })
-                                    )}
+                                    {new Date(note.date).toLocaleDateString('en-GB', {
+                                        day: 'numeric',
+                                        month: 'long',
+                                        year: 'numeric',
+                                    })}
                                 </p>
                             </div>
                             <div className="note-actions">
-                                <button className="action-btn menu-action" onClick={() => handleDropdownToggle(note._id)}>
+                                <button className="action-btn menu-action" onClick={() => handleDropdownToggle(index)}>
                                     <EllipsisVertical size={20} />
                                 </button>
-                                <button className="action-btn" onClick={() => navigateToBlog(index)}>
+                                <button className="action-btn" onClick={() => navigateToBlog(note._id)}>
                                     <ArrowRightAltRounded size={20} />
                                 </button>
                                 {dropdownOpen === index && (
                                     <div className="dropdown-menu">
-                                        <button onClick={() => handleDelete(note.id)}>Delete</button>
-                                        <button onClick={() => handleDateChange(index)}>Change Date</button>
+                                        <button onClick={() => handleDelete(note._id)}>Delete</button>
                                     </div>
                                 )}
                             </div>

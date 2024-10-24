@@ -78,7 +78,7 @@ export default function PublicBlog() {
     const color = useSelector(state => state.color.color);
     const [image, setImage] = useState(null);
     const [icon, setIcon] = useState(null);
-    const [contentData, setContentData] = useState([]);
+    const [type, setType] = useState('');
     const params = useParams();
 
     const [upload, setUpload] = useState({
@@ -94,6 +94,7 @@ export default function PublicBlog() {
             const fetchedImage = res.data?.data?.file?.coverPhoto?.location || null;
             const fetchedIcon = res.data?.data?.file?.iconImage || null;
             const fetchedContent = res.data?.data?.file?.content || '';
+            setType(res.data?.data?.file?.type);
             console.log(res)
             setImage(fetchedImage);
             setIcon(fetchedIcon);
@@ -102,7 +103,7 @@ export default function PublicBlog() {
                 // setContentData(JSON.parse(fetchedContent));
                 editor.replaceBlocks(editor.document, JSON.parse(fetchedContent));
             } else {
-                setContentData(dummyData);
+                // setContentData(dummyData);
                 const blocks = await editor.tryParseHTMLToBlocks('');
                 editor.replaceBlocks(editor.document, blocks);
             }
@@ -113,7 +114,7 @@ export default function PublicBlog() {
             });
         } catch (error) {
             console.error(error);
-            setContentData(dummyData);
+            // setContentData(dummyData);
         }
     };
 
@@ -134,7 +135,7 @@ export default function PublicBlog() {
             <ToggleIconForAdmin />
             <div className="bn-container PublicBlog">
                 <div className="coverImageContainer">
-                    {upload.cover && <FileUpload image={image} isPublic={true} />}
+                    {upload.cover && <FileUpload image={image} isPublic={true} type={type.toLowerCase()} />}
                     {upload.icon && (
                         <label htmlFor="file">
                             <div className="iconUpload">

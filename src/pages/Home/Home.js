@@ -31,15 +31,17 @@ function Home() {
     const [isScrolled, setIsScrolled] = useState(false);
     const [value, setValue] = useState("");
     const [isActive, setIsActive] = useState(false);
+    const [achievements, setAchievements] = useState([])
 
     const [about, setAbout] = useState('');
     const [education, setEducation] = useState([]);
     const [name, setName] = useState('');
-
+    const [skills, setSkills] = useState([])
+    const [cardItems, setCardsItems] = useState([])
     const fetchdata = async () => {
         try {
             const response = await axiosPrivate.get('/profile')
-            console.log(response.data.data)
+            // console.log(response.data.data)
             setAbout(response.data?.data?.about || abt)
             setEducation(response.data?.data?.education || edu)
             setName(response.data?.data?.name || nama)
@@ -49,8 +51,50 @@ function Home() {
         }
     }
 
+    const fetchProjects = async () => {
+        try {
+            const response = await axiosPrivate.get('/file/short-details', {
+                params: {
+                    type: "projects"
+                }
+            })
+            // console.log(response?.data.data?.files)
+            setCardsItems(response?.data.data?.files || [])
+        }
+        catch (e) {
+            console.log(e)
+        }
+    }
+
+    const fetchAchievements = async () => {
+        try {
+            const response = await axiosPrivate.get('/achievement')
+            // console.log(response?.data.data?.files)
+            setAchievements(response?.data.data?.achievements || [])
+        }
+        catch (e) {
+            console.log(e)
+        }
+    }
+
+    const fetchSkills = async () => {
+        try {
+            const response = await axiosPrivate.get('/skill')
+            console.log(response?.data.data?.skills)
+            setSkills(response?.data.data?.skills || [])
+        }
+        catch (e) {
+            console.log(e)
+        }
+    }
+
+
+
     useEffect(() => {
         fetchdata()
+        fetchProjects()
+        fetchAchievements()
+        fetchSkills()
     }, [])
 
     const imageArr = [
@@ -76,21 +120,24 @@ function Home() {
 
             if (scrollY > 850) {
                 setIsScrolled(true);
-                console.log(scrollY)
+                // console.log(scrollY)
                 let newValue = '';
 
                 if (scrollY > 1440 && scrollY < 2330) {
                     newValue = 'Skills';
-                } else if (scrollY > 2415 && scrollY < 5400) {
+                } else if (scrollY > 2415 && scrollY < 2415 + ((isMobile ? 300 : 600) * cardItems.length) + 700) {
                     newValue = 'Projects';
-                } else if (scrollY > 5560 && scrollY < 6190) {
+                } else if (scrollY > 2415 + ((isMobile ? 300 : 600) * cardItems.length) + 700 && scrollY < document.documentElement.scrollHeight - 400) {
                     newValue = 'Achievements';
                 }
                 else {
                     newValue = '';
                 }
-                // const totalHeight = document.documentElement.scrollHeight;
+                const totalHeight = document.documentElement.scrollHeight;
                 // console.log(totalHeight - scrollY);
+                if (totalHeight < 1500) {
+                    newValue = "Achievements"
+                }
 
 
                 if (newValue !== value) {
@@ -114,50 +161,19 @@ function Home() {
     }, [value]);
 
 
-    const skills = [
-        'Web Developer',
-        "DevOps Engineer",
-        'Graphic Designer',
-    ];
+    // const skills = [
+    //     'Web Developer',
+    //     "DevOps Engineer",
+    //     'Graphic Designer',
+    // ];
 
-    const achievements = [
-        "Internship in MCF",
-        "Google Developers Group On Campus Organizer",
-        "AWS: Solution Architect Certification",
-        "Google Developers Group On Campus Organizer",
-        "AWS: Solution Architect Certification"
-    ];
-
-    const cardItems = [
-        {
-            id: Math.random(),
-            title: 'The Vault',
-            copy: 'An app for secure storage of confidential files, featuring a hierarchical access control system.',
-            tags: ['React', 'Node.js', 'Express', 'MongoDB', 'JWT', 'Material-UI'],
-            image: pic,
-        },
-        {
-            id: Math.random(),
-            title: 'Project 2',
-            copy: 'Another project description.',
-            tags: ['React', 'Node.js', 'MongoDB'],
-            image: pic,
-        },
-        {
-            id: Math.random(),
-            title: 'Project 3',
-            copy: 'Third project description.',
-            tags: ['React', 'Node.js', 'MongoDB'],
-            image: pic,
-        },
-        {
-            id: Math.random(),
-            title: 'Project 4',
-            copy: 'Fourth project description.',
-            tags: ['React', 'Node.js', 'MongoDB'],
-            image: pic,
-        },
-    ];
+    // const achievements = [
+    //     "Internship in MCF",
+    //     "Google Developers Group On Campus Organizer",
+    //     "AWS: Solution Architect Certification",
+    //     "Google Developers Group On Campus Organizer",
+    //     "AWS: Solution Architect Certification"
+    // ];
 
     const isMobile = useMediaQuery({ query: '(max-width: 500px)' });
 
@@ -165,7 +181,7 @@ function Home() {
     useEffect(() => {
         const quaternaryPage = document.querySelector('.quaternaryPage');
         const content1 = document.querySelector('.carousel');
-        console.log(isMobile)
+        // console.log(isMobile)
 
         const cardHeight = isMobile ? 315 : 600;
         quaternaryPage.style.height = `${cardHeight * cardItems.length + 800}px`;
@@ -174,7 +190,7 @@ function Home() {
     }, [isMobile, cardItems.length]);
 
     const handleScrolling = (e) => {
-        console.log(window.scrollY);
+        // console.log(window.scrollY);
     };
 
 
@@ -183,10 +199,10 @@ function Home() {
             <div className="mainlandingPage">
                 <Navbar title={isScrolled ? 'Chandrababu Gowda' : "CG"} value={value} isActive={isActive} />
                 <div className="mainContent">
-                    <h1 className='ebGaramond'>Chandrababu <br />Gowda</h1>
+                    <h1 className='ebGaramond'>{name}</h1>
                     <ul>
                         {skills.map((skill, index) => (
-                            <li className='nunito' key={index + 100000}>{skill}</li>
+                            <li className='nunito' key={skill._id}>{skill.name}</li>
                         ))}
                     </ul>
                 </div>
@@ -204,7 +220,7 @@ function Home() {
 
                         {
                             education.map((edu, index) => (
-                                <Education key={edu.id} college={edu.institution} degree={edu.degree} percentage={edu.grade_details} marks={edu.grade_main} />
+                                <Education key={edu._id} college={edu.institution} degree={edu.degree} percentage={edu.grade_details} marks={edu.grade_main} />
                             ))
                         }
                     </div>
@@ -214,43 +230,22 @@ function Home() {
                 <div className="actualContent">
                     {/* {<h1 className='ebGaramond'>Skills</h1>} */}
                     <div className="containerSkills">
-                        <div className='skillcontent'>
-                            <h2 className='ebGaramond'>Full Stack Developer</h2>
-                            <div className="services">
-                                {
-                                    imageArr.map((image, index) => (
-                                        <div className="service" key={index}>
-                                            <img src={image} alt="" />
-                                        </div>
-                                    ))
-                                }
-                            </div>
-                        </div>
-                        <div className='skillcontent'>
-                            <h2 className='ebGaramond'>DevOps Engineer</h2>
-                            <div className="services">
-                                {
-                                    imageArr.map((image, index) => (
-                                        <div className="service" key={index}>
-                                            <img src={image} alt="" />
-                                        </div>
-                                    ))
-                                }
-                            </div>
-                        </div>
-                        <div className='skillcontent'>
-                            <h2 className='ebGaramond'>Graphic Designer</h2>
-                            <div id='projects'></div>
-                            <div className="services">
-                                {
-                                    imageArr.map((image, index) => (
-                                        <div className="service" key={index}>
-                                            <img src={image} alt="" />
-                                        </div>
-                                    ))
-                                }
-                            </div>
-                        </div>
+                        {
+                            skills.map((skill, index) => (
+                                <div className='skillcontent'>
+                                    <h2 className='ebGaramond'>{skill.name}</h2>
+                                    <div className="services">
+                                        {
+                                            imageArr.map((image, index) => (
+                                                <div className="service" key={index + 98762}>
+                                                    <img src={image} alt="" />
+                                                </div>
+                                            ))
+                                        }
+                                    </div>
+                                </div>
+                            ))
+                        }
                     </div>
                 </div>
             </div>
@@ -266,7 +261,7 @@ function Home() {
                     {
                         achievements.map((achievement, index) => (
                             <div className="achievement" key={index + 2000}>
-                                <p className='ebGaramond'>{achievement}</p>
+                                <p className='ebGaramond'>{achievement.title}</p>
                             </div>
                         ))
                     }

@@ -43,6 +43,9 @@
 .mainContent h1 {
     font-size: 100px;
     line-height: 92px;
+    word-wrap: normal;
+    width: 540px;
+
 }
 
 .addnContent {
@@ -223,7 +226,7 @@
     font-size: 40px;
     line-height: 90px;
     border-bottom: 2px solid var(--dark-font-color);
-    width: 100%;
+    width: 90%;
 }
 
 .pentaryContent {

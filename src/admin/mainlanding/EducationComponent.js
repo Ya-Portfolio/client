@@ -1,11 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import './EducationComponent.css';
 import axiosPrivate from '../../api/axios';
 import { v4 as uuidV4 } from 'uuid';
 
-function EducationComponent({ education }) {
+function EducationComponent({ education, about }) {
     const [educationList, setEducationList] = useState([]);
     const [editingId, setEditingId] = useState(null);
+    const inputRef = useRef(null); // Reference for the input field
 
     useEffect(() => {
         if (education && education.length > 0) {
@@ -15,7 +16,7 @@ function EducationComponent({ education }) {
                     institution: edu.institution || '',
                     degree: edu.degree || '',
                     grade_main: edu.grade_main || '',
-                    grade_details: edu.grade_main || '',
+                    grade_details: edu.grade_details || '',
                 };
             });
             setEducationList(newEducation);
@@ -33,8 +34,6 @@ function EducationComponent({ education }) {
         const updatedEducationList = [...educationList, newEdu];
         setEducationList(updatedEducationList);
         setEditingId(newEdu.id);
-
-        await saveEducationToDB(updatedEducationList);
     };
 
     const handleSaveEducation = async () => {
@@ -60,12 +59,20 @@ function EducationComponent({ education }) {
 
     const saveEducationToDB = async (updatedEducationList) => {
         try {
-            const response = await axiosPrivate.put('/profile', { education: updatedEducationList });
+            console.log(updatedEducationList)
+            const response = await axiosPrivate.put('/profile', { about, education: updatedEducationList });
             console.log('Education updated:', response.data);
         } catch (error) {
             console.error('Error updating education:', error);
         }
     };
+
+    useEffect(() => {
+        // Focus the input field when editing
+        if (editingId) {
+            inputRef.current?.focus();
+        }
+    }, [editingId]);
 
     return (
         <div className="educationComponent">
@@ -76,6 +83,7 @@ function EducationComponent({ education }) {
                         <div className="educationForm">
                             <input
                                 type="text"
+                                ref={inputRef} // Set ref to input
                                 placeholder="School Name"
                                 value={edu.institution || ''}
                                 onChange={(e) => handleInputChange(edu.id, 'institution', e.target.value)}

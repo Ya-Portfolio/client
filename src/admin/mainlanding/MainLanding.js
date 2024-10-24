@@ -4,6 +4,7 @@ import AdminInternships from '../adminInternship/AdminInternships';
 import EducationComponent from './EducationComponent';
 import AdminSkills from '../adminSkills/AdminSkills';
 import axiosPrivate from '../../api/axios';
+import { toast } from 'sonner';
 
 function MainLanding() {
     const [name, setName] = useState('');
@@ -11,14 +12,26 @@ function MainLanding() {
     const [isEditingProfile, setIsEditingProfile] = useState(false);
     const [education, setEducation] = useState([]);
     const [isAddingAchievement, setIsAddingAchievement] = useState(false);
-    const handleEditProfile = () => setIsEditingProfile(!isEditingProfile);
-    const handleSaveProfile = () => setIsEditingProfile(false);
+
+    const handleSaveProfile = async () => {
+        await axiosPrivate.put('/profile', { name, about }).then(res => {
+            console.log(res)
+            toast.success('Profile updated successfully')
+        }).catch(err => {
+            console.log(err)
+            toast.error('Profile update failed')
+        }).finally(() => {
+            setIsEditingProfile(false)
+        })
+    };
+    const handleEditProfile = () => {
+        setIsEditingProfile(true)
+    }
 
     const fetchData = async () => {
         try {
             const nameAbout = await axiosPrivate.get('/profile');
             const data = nameAbout.data.data;
-            console.log(data)
             setName(data.name);
             setEducation(data.education);
 
@@ -29,8 +42,9 @@ function MainLanding() {
     }
 
 
+
     useEffect(() => {
-        
+
         fetchData()
     }, [])
 
@@ -63,19 +77,23 @@ function MainLanding() {
                         </>
                     )}
                 </div>
-                <div className="adminaddbtns">
-                    <h2 className={isAddingAchievement ? '' : "nowWorkingOn"} onClick={() => setIsAddingAchievement(false)}>Skills</h2>
-                    <h2 className={isAddingAchievement ? "nowWorkingOn" : ""} onClick={() => setIsAddingAchievement(true)}>Achievements</h2>
-                </div>
-                {
-                    isAddingAchievement ? (
-                        <AdminInternships />
-                    ) : (
-                        <AdminSkills />
-                    )
-                }
             </div>
-            <EducationComponent education = {education}/>
+            <div className='mainlandingContainerAdmin'>
+                <div className='admininternshipskills'>
+                    <div className="adminaddbtns">
+                        <h2 className={isAddingAchievement ? '' : "nowWorkingOn"} onClick={() => setIsAddingAchievement(false)}>Skills</h2>
+                        <h2 className={isAddingAchievement ? "nowWorkingOn" : ""} onClick={() => setIsAddingAchievement(true)}>Achievements</h2>
+                    </div>
+                    {
+                        isAddingAchievement ? (
+                            <AdminInternships />
+                        ) : (
+                            <AdminSkills />
+                        )
+                    }
+                </div>
+                <EducationComponent education={education} name={name} about={about} />
+            </div>
         </div>
     );
 }
