@@ -1,61 +1,60 @@
 .documentsContainer {
-    margin-top: 200px;
-    padding: 40px 0 0 120px;
+  margin-top: 200px;
+  padding: 40px 0 0 120px;
 }
 
 .docsContainer,
 .pageContainer {
-    display: grid;
-    margin-top: 50px;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    row-gap: 60px;
+  display: grid;
+  margin-top: 50px;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  row-gap: 60px;
 }
 
 .pageContainer {
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
 }
 
 .docsContainer img,
 .pageContainer img {
-    height: 150px;
+  height: 150px;
 }
 
 .folders,
 .pages {
-    position: relative;
-    cursor: pointer;
+  position: relative;
+  cursor: pointer;
 }
 
 .folders p {
-    position: absolute;
-    bottom: 30px;
-    left: 60px;
+  position: absolute;
+  bottom: 30px;
+  left: 60px;
 }
 
 .pages p {
-    position: absolute;
-    bottom: 30px;
-    left: 18px;
+  position: absolute;
+  bottom: 30px;
+  left: 18px;
 }
 
-@media only screen and (max-width: 500px) {
-    .documentsContainer {
-        padding: 10px;
-        margin-top: 10px;
+@media only screen and (max-width: 786px) {
+  .documentsContainer {
+    padding: 10px;
+    margin-top: 10px;
+  }
+
+  .docsContainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding-left: 25px;
+
+    .folders img {
+      height: 120px;
     }
 
-    .docsContainer {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        padding-left: 25px;
-
-        .folders img {
-            height: 120px;
-        }
-
-        .folders p {
-            left: 30px;
-        }
+    .folders p {
+      left: 30px;
     }
-
+  }
 }

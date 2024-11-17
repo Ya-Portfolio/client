@@ -1,0 +1,31 @@
+.menuBarAdmin div {
+  width: 30px;
+  height: 6px;
+  border-radius: 6px;
+  background: #000;
+  margin: 3px 0;
+}
+
+.menuBarAdmin {
+  position: absolute;
+  right: 5%;
+  cursor: pointer;
+  top: 1%;
+  display: none;
+  z-index: 1001;
+}
+
+.extraContainer {
+  padding: 60px 0 0 0;
+  display: none;
+}
+
+@media only screen and (max-width: 786px) {
+  .menuBarAdmin {
+    display: block;
+  }
+
+  .extraContainer {
+    display: block;
+  }
+}

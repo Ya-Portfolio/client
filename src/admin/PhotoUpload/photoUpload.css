@@ -1,76 +1,88 @@
 .addingNewInnerCards,
 .imageCardsForGallery {
-    width: 200px;
-    height: 200px;
-    box-shadow: var(--box-shadow-color);
-    padding: 12px;
-    border-radius: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 180px;
-    overflow: hidden;
-    flex-shrink: 0;
-    margin-right: 10px;
-    padding-bottom: 50px;
+  width: 200px;
+  height: 200px;
+  box-shadow: var(--box-shadow-color);
+  padding: 12px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 180px;
+  overflow: hidden;
+  flex-shrink: 0;
+  margin-right: 10px;
+  padding-bottom: 50px;
 
-    img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-    }
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
 }
 
 .imageGalleryAddedToImages {
-    display: flex;
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    width: 100%;
-    padding-bottom: 10px;
-    gap: 10px;
-    scroll-behavior: smooth;
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  width: 100%;
+  padding-bottom: 10px;
+  gap: 10px;
+  scroll-behavior: smooth;
 }
 
 .imageGalleryAddedToImages::-webkit-scrollbar {
-    height: 8px;
+  height: 8px;
 }
 
 .imageGalleryAddedToImages::-webkit-scrollbar-thumb {
-    background-color: rgba(0, 0, 0, 0.5);
-    border-radius: 4px;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 4px;
 }
 
 .imageGalleryAddedToImages::-webkit-scrollbar-track {
-    background: transparent;
+  background: transparent;
 }
 
-
 .photoUploadContainer {
-    display: flex;
-    align-items: center;
-    width: 80vw;
-    overflow: auto;
+  display: flex;
+  align-items: center;
+  width: 80vw;
+  overflow: auto;
 }
 
 .imageCardsForGallery {
-    padding: 0;
-    position: relative;
-    margin: 0 20px;
+  padding: 0;
+  position: relative;
+  margin: 0 20px;
 
-    &:hover {
-        .deleteOptionForGallery {
-            display: block;
-        }
+  &:hover {
+    .deleteOptionForGallery {
+      display: block;
     }
+  }
 }
 
 .deleteOptionForGallery {
-    position: absolute;
-    top: 3%;
-    right: 3%;
-    display: none;
+  position: absolute;
+  top: 3%;
+  right: 3%;
+  display: none;
 }
 
 .photoUploadContainer {
-    height: 250px;
+  height: 250px;
+}
+
+@media screen and (max-width: 786px) {
+  .addingNewInnerCards,
+  .imageCardsForGallery {
+    width: 150px;
+    height: 150px;
+    font-size: 130px;
+  }
+
+  .photoUploadContainer {
+    height: 200px;
+  }
 }

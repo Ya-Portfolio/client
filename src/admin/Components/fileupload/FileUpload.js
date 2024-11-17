@@ -1,9 +1,15 @@
 import React from 'react';
 import '../fileupload/FileUpload.css';
+import { useMediaQuery } from 'react-responsive';
+
 
 function FileUpload({ image, handleFileChange, isPublic = false, type }) {
+    const isMobile = useMediaQuery({ query: '(max-width: 786px)' });
     return (
-        <form className="file-upload-form" style={type === 'projects'  ? { height: '800px' } : {}}>
+        <form className="file-upload-form" style={(type === 'projects' && !isMobile) ? { height: '800px' } : {
+            height:
+                '400px'
+        }}>
             {image ? (
                 <label htmlFor='file'>
                     <div className="uploaded-image-container">

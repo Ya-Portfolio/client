@@ -108,7 +108,7 @@ function AdminDocUpload() {
         <div className="adminDocUpload">
             <h1 className='ebGaramond'>Document Upload Dashboard</h1>
             <div className="adminDocContainer">
-                <div className="documentCard certificate" >
+                {/* <div className="documentCard certificate" >
                     <div className="documentCardIcon">
                         <IconCertificate />
                     </div>
@@ -127,7 +127,7 @@ function AdminDocUpload() {
                             <ArrowRightAlt />
                         </div>
                     </div>
-                </div>
+                </div> */}
                 {loading ? <p>Loading...</p> : error ? <p>{error}</p> : documents?.map((item, index) => (
                     <div className="documentCard" key={item._id} >
                         <div className="deleteIconContainer" onClick={() => deleteFolder(item._id)}>

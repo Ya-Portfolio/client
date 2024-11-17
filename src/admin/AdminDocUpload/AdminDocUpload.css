@@ -1,98 +1,96 @@
 .adminDocUpload {
-    margin: 50px 0 0 150px;
-    width: 80%;
+  margin: 50px 0 0 150px;
+  width: 80%;
 
-    h1 {
-        font-size: 52px;
-        line-height: 42px;
-        font-weight: 600;
-        color: var(--font-color);
-    }
+  h1 {
+    font-size: 52px;
+    line-height: 42px;
+    font-weight: 600;
+    color: var(--font-color);
+  }
 }
 
 .adminDocContainer {
-    margin: 65px -3px;
-    display: flex;
-    flex-wrap: wrap;
+  margin: 65px -3px;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .documentCard {
-    padding: 12px;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    font-family: "Helvetica Neue", sans-serif;
-    font-size: 14px;
-    color: var(--font-color);
-    position: relative;
-    width: 250px;
-    height: 250px;
-    margin: 6px;
-    background-color: var(--bg-color);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-    margin: 0 50px 50px 0;
+  padding: 12px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  font-family: "Helvetica Neue", sans-serif;
+  font-size: 14px;
+  color: var(--font-color);
+  position: relative;
+  width: 250px;
+  height: 250px;
+  margin: 6px;
+  background-color: var(--bg-color);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  margin: 0 50px 50px 0;
 
-    .documentCardIcon {
-        background-color: #fff;
-        border-radius: 6px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
+  .documentCardIcon {
+    background-color: #fff;
+    border-radius: 6px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 }
 
 .documentCard:hover {
-    transform: translateY(1px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+  transform: translateY(1px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
 }
 
 .documentCard h3 {
-    font-size: 18px;
-    margin: 8px 0;
+  font-size: 18px;
+  margin: 8px 0;
 }
 
 .documentCard p {
-    font-size: 14px;
-    line-height: 1.4;
-    color: var(--font-color);
+  font-size: 14px;
+  line-height: 1.4;
+  color: var(--font-color);
 }
 
 .documentFirstChild p:last-child {
-    font-weight: 700;
+  font-weight: 700;
 }
 
 .documentFirstChild {
-    display: flex;
-    /* justify-content: space-between; */
-    align-items: center;
-    padding: 3px;
-    margin: 10px 0;
+  display: flex;
+  /* justify-content: space-between; */
+  align-items: center;
+  padding: 3px;
+  margin: 10px 0;
 }
 
-
 .docIconContainer {
-    margin-right: 10px;
+  margin-right: 10px;
 }
 
 .documentName {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 
-
-    p {
-        font-size: 16px;
-    }
+  p {
+    font-size: 16px;
+  }
 }
 
 .documentCard {
-    width: 250px;
-    height: 250px;
-    background: var(--bg-color);
-    border-radius: 20px;
-    padding: 20px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-    cursor: pointer;
+  width: 250px;
+  height: 250px;
+  background: var(--bg-color);
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  cursor: pointer;
 }
 
 /* .lastCard {
@@ -123,211 +121,202 @@
 } */
 
 .lastCardAdmin {
-
-    input {
-        outline: none;
-        padding: 5px;
-        background: var(--bg-color);
-    }
-
+  input {
+    outline: none;
+    padding: 5px;
+    background: var(--bg-color);
+  }
 }
 
 .documentCard:hover {
-    transform: scale(1.05);
+  transform: scale(1.05);
 }
 
 .documentCard:active {
-    transform: scale(0.95);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  transform: scale(0.95);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
 .documentCardIcon h1 {
-    font-size: 5rem;
-    color: #007aff;
-    margin: 0;
+  font-size: 5rem;
+  color: #007aff;
+  margin: 0;
 }
 
 .certificate .documentCardIcon {
-    height: 130px;
+  height: 130px;
 
-    svg {
-        height: 55px;
-        width: 55px;
-    }
+  svg {
+    height: 55px;
+    width: 55px;
+  }
 }
 
 .certificate .documentName {
-    font-weight: 600;
+  font-weight: 600;
 }
 
 .lastdocIcon {
-    .check {
-        cursor: pointer;
-        position: relative;
-        margin: auto;
-        width: 18px;
-        height: 18px;
-        -webkit-tap-highlight-color: transparent;
-        transform: translate3d(0, 0, 0);
-    }
+  .check {
+    cursor: pointer;
+    position: relative;
+    margin: auto;
+    width: 18px;
+    height: 18px;
+    -webkit-tap-highlight-color: transparent;
+    transform: translate3d(0, 0, 0);
+  }
 
-    .check:before {
-        content: "";
-        position: absolute;
-        top: -15px;
-        left: -15px;
-        width: 48px;
-        height: 48px;
-        border-radius: 50%;
-        /* background: rgba(34, 50, 84, 0.03); */
-        opacity: 0;
-        transition: opacity 0.2s ease;
-    }
+  .check:before {
+    content: "";
+    position: absolute;
+    top: -15px;
+    left: -15px;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    /* background: rgba(34, 50, 84, 0.03); */
+    opacity: 0;
+    transition: opacity 0.2s ease;
+  }
 
-    .check svg {
-        position: relative;
-        z-index: 1;
-        fill: none;
-        stroke-linecap: round;
-        stroke-linejoin: round;
-        stroke: #c8ccd4;
-        stroke-width: 1.5;
-        transform: translate3d(0, 0, 0);
-        transition: all 0.2s ease;
-    }
+  .check svg {
+    position: relative;
+    z-index: 1;
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke: #c8ccd4;
+    stroke-width: 1.5;
+    transform: translate3d(0, 0, 0);
+    transition: all 0.2s ease;
+  }
 
-    .check svg path {
-        stroke-dasharray: 60;
-        stroke-dashoffset: 0;
-    }
+  .check svg path {
+    stroke-dasharray: 60;
+    stroke-dashoffset: 0;
+  }
 
-    .check svg polyline {
-        stroke-dasharray: 22;
-        stroke-dashoffset: 66;
-    }
+  .check svg polyline {
+    stroke-dasharray: 22;
+    stroke-dashoffset: 66;
+  }
 
-    .check:hover:before {
-        opacity: 1;
-    }
+  .check:hover:before {
+    opacity: 1;
+  }
 
-    .check:hover svg {
-        stroke: #4285f4;
-    }
+  .check:hover svg {
+    stroke: #4285f4;
+  }
 
-    #cbx:checked+.check svg {
-        stroke: #4285f4;
-    }
+  #cbx:checked + .check svg {
+    stroke: #4285f4;
+  }
 
-    #cbx:checked+.check svg path {
-        stroke-dashoffset: 60;
-        transition: all 0.3s linear;
-    }
+  #cbx:checked + .check svg path {
+    stroke-dashoffset: 60;
+    transition: all 0.3s linear;
+  }
 
-    #cbx:checked+.check svg polyline {
-        stroke-dashoffset: 42;
-        transition: all 0.2s linear;
-        transition-delay: 0.15s;
-    }
-
+  #cbx:checked + .check svg polyline {
+    stroke-dashoffset: 42;
+    transition: all 0.2s linear;
+    transition-delay: 0.15s;
+  }
 }
 
 .lastDocumentName {
-    span {
-        width: 30px;
-        margin-right: -10px;
-    }
+  span {
+    width: 30px;
+    margin-right: -10px;
+  }
 }
 
-.deleteIconContainer{
-    position: absolute;
-    right: 2%;
+.deleteIconContainer {
+  position: absolute;
+  right: 10%;
+  top: 10%;
 }
 
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: 786px) {
+  .adminDocUpload {
+    margin: 20px;
+    width: 90%;
+    position: relative;
+    height: 100vh;
 
-    .adminDocUpload {
-        margin: 20px;
-        width: 90%;
-
-        h1 {
-            font-size: 32px;
-            line-height: 36px;
-            font-weight: 600;
-            color: #000000;
-        }
+    h1.ebGaramond {
+      font-size: 32px;
+      line-height: 36px;
+      font-weight: 600;
+      color: #000000;
+      padding: 10px 0 60px 0;
     }
+  }
 
-    .addIconAdmin {
-        bottom: auto;
-        top: 2%;
+  .adminDocContainer {
+    margin: 40px 0;
+    display: block;
+  }
+
+  .documentCard {
+    width: 100%;
+    height: auto;
+    margin-bottom: 20px;
+    padding: 10px;
+    border-radius: 16px;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+    font-size: 16px;
+    background-color: #f8f8f8;
+  }
+
+  .documentCard h3 {
+    font-size: 20px;
+  }
+
+  .documentCard p {
+    font-size: 14px;
+    color: #666666;
+  }
+
+  .documentCard:hover {
+    transform: none;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  }
+
+  .documentFirstChild {
+    display: flex;
+    margin: 10px 0;
+  }
+
+  .documentName p {
+    font-size: 14px;
+    color: #000000;
+  }
+
+  .documentCardIcon h1 {
+    font-size: 3rem;
+    color: #007aff;
+  }
+
+  .certificate .documentCardIcon {
+    height: 100px;
+
+    svg {
+      height: 40px;
+      width: 40px;
     }
+  }
 
-
-    .adminDocContainer {
-        margin: 40px 0;
-        display: block;
+  .lastdocIcon {
+    .check {
+      width: 24px;
+      height: 24px;
     }
+  }
 
-    .documentCard {
-        width: 100%;
-        height: auto;
-        margin-bottom: 20px;
-        padding: 10px;
-        border-radius: 16px;
-        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
-        font-size: 16px;
-        background-color: #F8F8F8;
-    }
-
-    .documentCard h3 {
-        font-size: 20px;
-    }
-
-    .documentCard p {
-        font-size: 14px;
-        color: #666666;
-    }
-
-    .documentCard:hover {
-        transform: none;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-    }
-
-    .documentFirstChild {
-        display: flex;
-        margin: 10px 0;
-    }
-
-    .documentName p {
-        font-size: 14px;
-        color: #000000;
-    }
-
-    .documentCardIcon h1 {
-        font-size: 3rem;
-        color: #007aff;
-    }
-
-    .certificate .documentCardIcon {
-        height: 100px;
-
-        svg {
-            height: 40px;
-            width: 40px;
-        }
-    }
-
-    .lastdocIcon {
-        .check {
-            width: 24px;
-            height: 24px;
-        }
-    }
-
-    .lastDocumentName span {
-        width: 20px;
-    }
-
-
-
+  .lastDocumentName span {
+    width: 20px;
+  }
 }

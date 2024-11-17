@@ -1,400 +1,457 @@
 .home {
-    background: var(--dark-bg-color);
-    width: 100vw;
-    height: auto;
-    position: relative;
+  background: var(--dark-bg-color);
+  width: 100vw;
+  height: auto;
+  position: relative;
 }
 
 .mainlandingPage {
-    width: 100vw;
-    height: 100vh;
-    overflow: hidden;
-    background: var(--dark-bg-color);
-    /* position: fixed; */
-    top: 0;
-    left: 0;
-    z-index: 1;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background: var(--dark-bg-color);
+  /* position: fixed; */
+  top: 0;
+  left: 0;
+  z-index: 1;
 }
 
 .mainContent {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    height: 100vh;
-    padding: 0 0 0 120px;
-    color: var(--dark-font-color);
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  height: 100vh;
+  padding: 0 0 0 120px;
+  color: var(--dark-font-color);
 }
 
 .mainContent ul {
-    display: flex;
-    padding-top: 20px;
+  display: flex;
+  padding-top: 20px;
 }
 
 .mainContent li {
-    list-style: none;
-    padding: 0 14px;
-    border-right: 2px solid var(--dark-font-color);
+  list-style: none;
+  padding: 0 14px;
+  border-right: 2px solid var(--dark-font-color);
 }
 
 .mainContent li:last-child {
-    border-right: none;
+  border-right: none;
 }
 
 .mainContent h1 {
-    font-size: 100px;
-    line-height: 92px;
-    word-wrap: normal;
-    width: 540px;
-
+  font-size: 100px;
+  line-height: 92px;
+  word-wrap: normal;
+  width: 540px;
 }
 
 .addnContent {
-    width: 40%;
-    background: var(--dark-font-color);
-    position: absolute;
-    right: 5%;
-    top: 0;
-    height: 100vh;
-    z-index: 1;
-    overflow: hidden;
+  width: 40%;
+  background: var(--dark-font-color);
+  position: absolute;
+  right: 5%;
+  top: 0;
+  height: 100vh;
+  z-index: 1;
+  overflow: hidden;
 }
 
 .imageHandler img {
-    scale: 1.75;
-    position: absolute;
-    right: 25%;
-    bottom: 23%;
-    z-index: 2;
+  scale: 1.75;
+  position: absolute;
+  right: 25%;
+  bottom: 23%;
+  z-index: 2;
 }
 
 .secondaryPage,
 .tertiaryPage {
-    background: var(--dark-bg-color);
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: var(--dark-font-color);
-    transition: top 0.3s ease;
-    z-index: 2;
+  background: var(--dark-bg-color);
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--dark-font-color);
+  transition: top 0.3s ease;
+  z-index: 2;
 }
 
 .tertiaryPage {
-    height: 85vh;
+  height: 85vh;
 }
 
 .quaternaryPage {
-    height: auto;
-
+  height: auto;
 }
 
 .secondaryLanding {
-    width: 100%;
-    height: 100%;
-    background: var(--dark-bg-color);
+  width: 100%;
+  height: 100%;
+  background: var(--dark-bg-color);
 }
 
 .mainContentSecondaryPage {
-    width: 100%;
-    height: 100%;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding: 0 0 0 120px;
-    align-items: center;
-    color: var(--light-font-color);
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 0 0 0 120px;
+  align-items: center;
+  color: var(--light-font-color);
 }
 
 .content {
-    width: 600px;
-    font-size: 24px;
-    line-height: 40px;
-    text-wrap: auto;
-    text-align: justify;
+  width: 600px;
+  font-size: 24px;
+  line-height: 40px;
+  text-wrap: auto;
+  text-align: justify;
 }
 
 .tertiaryChild {
-    background: var(--dark-bg-color);
+  background: var(--dark-bg-color);
 }
 
 .sideContent h2 {
-    font-size: 40px;
-    line-height: 52px;
-    padding-bottom: 20px;
+  font-size: 40px;
+  line-height: 52px;
+  padding-bottom: 20px;
 }
 
 .eduContainer {
-    padding-bottom: 20px;
-    width: 500px;
-    justify-content: space-between;
+  padding-bottom: 20px;
+  width: 786px;
+  justify-content: space-between;
 }
 
 .clgName p:first-child,
 .marks p:first-child {
-    font-size: 24px;
-    line-height: 32px;
-
+  font-size: 24px;
+  line-height: 32px;
 }
 
-
 .marks p:first-child {
-    font-weight: 700;
-    text-align: right;
+  font-weight: 700;
+  text-align: right;
 }
 
 .marks p:last-child {
-    text-align: right;
-
+  text-align: right;
 }
 
 .clgName p:last-child,
 .marks p:last-child {
-    font-size: 18px;
-    line-height: 24px;
+  font-size: 18px;
+  line-height: 24px;
 }
 
 .actualContent h1 {
-    font-size: 250px;
-    line-height: 147px;
-    color: #E7E8E7;
-    opacity: 0.05;
-    position: absolute;
-    top: 0;
-    z-index: 1;
-    left: 0;
+  font-size: 250px;
+  line-height: 147px;
+  color: #e7e8e7;
+  opacity: 0.05;
+  position: absolute;
+  top: 0;
+  z-index: 1;
+  left: 0;
 }
 
 .services {
-    display: flex;
+  display: flex;
 }
 
 .service {
-    margin: 0 14px;
+  margin: 0 14px;
 }
 
 .containerSkills {
-    padding: 0 0 0 120px;
+  padding: 0 0 0 120px;
 }
 
 .containerSkills h2 {
-    font-size: 48px;
-    line-height: 42px;
-    padding-bottom: 20px;
+  font-size: 48px;
+  line-height: 42px;
+  padding-bottom: 20px;
 }
 
 .tertiaryPage {
-    justify-content: flex-start;
+  justify-content: flex-start;
 }
 
 .skillcontent {
-    margin: 50px 0;
+  margin: 50px 0;
 }
 
 .skillcontent img {
-    height: 70px;
+  height: 60px;
 }
 
 .projectContainer {
-    width: 70vw;
-    height: 65vh;
-    position: relative;
+  width: 70vw;
+  height: 65vh;
+  position: relative;
 }
 
-
-
 .visit {
-    width: 90%;
-    margin: 5px auto;
-    padding: 7px;
-    border: 2px solid #384955;
-    border-radius: 10px;
-    text-align: center;
+  width: 90%;
+  margin: 5px auto;
+  padding: 7px;
+  border: 2px solid #384955;
+  border-radius: 10px;
+  text-align: center;
 }
 
 .pentaPage {
-    height: auto;
-    width: 100vw;
-    color: var(--dark-font-color);
-    padding: 0 0 100px 0;
+  height: auto;
+  width: 100vw;
+  color: var(--dark-font-color);
+  padding: 0 0 100px 0;
 }
 
 .achievement {
-    margin: 15px 0;
+  margin: 15px 0;
 }
 
 .achievement p {
-    font-size: 40px;
-    line-height: 90px;
-    border-bottom: 2px solid var(--dark-font-color);
-    width: 90%;
+  font-size: 40px;
+  line-height: 90px;
+  border-bottom: 2px solid var(--dark-font-color);
+  width: 90%;
 }
 
 .pentaryContent {
-    padding: 0 0 0 120px;
-    /* display: flex; */
-    flex-direction: column;
-    justify-content: space-evenly;
-    width: 100%;
-    height: 100%;
-    align-items: flex-start;
+  padding: 0 0 0 120px;
+  /* display: flex; */
+  flex-direction: column;
+  justify-content: space-evenly;
+  width: 100%;
+  height: 100%;
+  align-items: flex-start;
 }
 
 .hexaPage {
-    height: 100vh;
-    width: 100vw;
-    color: var(--dark-font-color);
-    padding: 0 0 0 120px;
-    display: flex;
-    align-items: flex-end;
+  height: 100vh;
+  width: 100vw;
+  color: var(--dark-font-color);
+  padding: 0 0 0 120px;
+  display: flex;
+  align-items: flex-end;
 }
 
 .hexaContent {
-    width: 100%;
-    height: 80%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
+  width: 100%;
+  height: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
+@media screen and (min-width: 800px) and (max-width: 1200px) {
+  .addnContent {
+    display: none;
+  }
 
-@media only screen and (max-width : 500px) {
+  .mainContentSecondaryPage {
+    height: auto;
+    grid-template-columns: 1fr;
+    padding: 40px;
+  }
 
-    .homeContainer {
-        padding: 0 0 0 10px;
+  .content {
+    width: 90%;
+    margin: 0 auto 30px auto;
+  }
+
+  .sideContent {
+    width: 90%;
+    margin: auto;
+  }
+
+  .containerSkills {
+    padding: 40px;
+    width: 90%;
+    margin: auto;
+  }
+
+  .quaternaryPage {
+    margin-top: 120px;
+  }
+}
+
+@media only screen and (max-width: 786px) {
+  .homeContainer {
+    padding: 0 0 0 10px;
+  }
+
+  .home {
+    padding: 10px;
+  }
+
+  .mainlandingPage {
+    height: auto;
+    overflow: hidden;
+  }
+
+  .sideContent {
+    width: 90%;
+  }
+
+  .mainContent {
+    overflow: hidden;
+    height: auto;
+    padding: 10px;
+    height: 786px;
+
+    h1 {
+      font-size: 58px;
     }
 
-    .mainlandingPage {
-        height: auto;
-        overflow: hidden;
+    ul li {
+      text-align: left;
+    }
+  }
+
+  * {
+    /* border: 1px red solid; */
+  }
+
+  .addnContent {
+    right: -1%;
+    top: -200%;
+    overflow: visible;
+  }
+
+  .secondaryPage {
+    height: auto;
+  }
+
+  .achievement {
+    width: 96vw;
+  }
+
+  .mainContentSecondaryPage {
+    padding: 10px;
+    grid-template-columns: 1fr;
+
+    .content {
+      font-size: 16px;
+      line-height: 26px;
+      width: 90%;
+      text-align: left;
     }
 
-    .mainContent {
-        overflow: hidden;
-        height: auto;
-        padding: 10px;
-        height: 500px;
-
-        h1 {
-            font-size: 70px;
-        }
-
-        ul li {
-            text-align: left;
-        }
+    h2 {
+      font-size: 28px;
+      line-height: 40px;
+      margin-top: 35px;
     }
 
-    * {
-        /* border: 1px red solid; */
+    .eduContainer {
+      width: 100%;
     }
 
-    .addnContent {
-        right: -1%;
-        top: -200%;
-        overflow: visible;
+    .clgName p:first-child {
+      font-size: 18px;
     }
 
-    .secondaryPage {
-        height: auto;
+    .clgName p:last-child {
+      font-size: 14px;
     }
 
-    .achievement {
-        width: 96vw;
+    .marks p {
+      font-size: 18px;
+    }
+  }
+
+  .tertiaryPage {
+    height: auto;
+
+    .containerSkills {
+      padding: 12px;
+      width: 99%;
     }
 
-    .mainContentSecondaryPage {
-        padding: 10px;
-        grid-template-columns: 1fr;
+    .skillcontent {
+      margin: 25px 0;
 
-        .content {
-            font-size: 16px;
-            line-height: 26px;
-            width: 99%;
-            text-align: left;
-        }
-
-        h2 {
-            font-size: 28px;
-            line-height: 40px;
-            margin-top: 35px;
-        }
-
-        .eduContainer {
-            width: 93vw;
-        }
-
-        .clgName p:first-child {
-            font-size: 18px;
-        }
-
-        .clgName p:last-child {
-            font-size: 14px;
-        }
-
-        .marks p {
-            font-size: 18px;
-        }
+      h2 {
+        font-size: 32px;
+        font-weight: 600;
+        line-height: 30px;
+        padding-bottom: 24px;
+      }
     }
 
+    .services {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      gap: 30px;
 
-    .tertiaryPage {
-        height: auto;
+      margin: 0 0 50px 0;
 
-        .containerSkills {
-            padding: 12px;
-            width: 99%;
+      .service {
+        margin: 0;
+
+        img {
+          height: 42px;
         }
+      }
+    }
+  }
 
-        .skillcontent {
-            margin: 25px 0;
+  .pentaPage {
+    padding: 10px;
 
-            h2 {
-                font-size: 32px;
-                font-weight: 600;
-                line-height: 30px;
-                padding-bottom: 24px;
-            }
-        }
-
-        .services {
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            gap: 30px;
-
-            .service {
-                margin: 0;
-
-                img {
-                    height: 42px;
-                }
-            }
-        }
+    .pentaryContent {
+      padding: 0px;
     }
 
-    .pentaPage {
-        padding: 10px;
+    .achievement p {
+      font-size: 22px;
+      font-weight: 500;
+      line-height: 58px;
+    }
+  }
 
-        .pentaryContent {
-            padding: 0px;
-        }
+  .hexaPage {
+    height: auto;
+    padding: 10px;
 
-        .achievement p {
-            font-size: 22px;
-            font-weight: 500;
-            line-height: 58px;
-        }
+    .form-container {
+      width: 100%;
+      margin-top: 70px;
+    }
+  }
+
+  .mainContent {
+    margin-top: 85px;
+
+    h1 {
+      width: auto;
+      text-align: center;
     }
 
-    .hexaPage {
-        height: auto;
-        padding: 10px;
+    ul {
+      flex-wrap: wrap;
+      width: 75%;
+      margin: auto;
 
-        .form-container {
-            width: 100%;
-            margin-top: 70px;
-        }
+      li {
+        margin: 12px 8px;
+        width: 190px;
+        height: 60px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+      }
     }
 
-
-
+    .mainContent ul li:last-child {
+      border-right: 2px solid var(--dark-font-color);
+    }
+  }
 }

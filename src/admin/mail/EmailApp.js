@@ -4,10 +4,14 @@ import './EmailComponent.css';
 import { toast } from 'sonner';
 import EmailDetailComponent from '../mail/EmailDetailComponent';
 import axiosPrivate from '../../api/axios';
+import { useMediaQuery } from 'react-responsive';
+
 
 function EmailApp() {
     const [selectedEmail, setSelectedEmail] = useState(null);
     const [mails, setMails] = useState([]);
+    const isMobile = useMediaQuery({ query: '(max-width: 786px)' });
+
 
     const handleSelectEmail = (email) => {
         setSelectedEmail(email);
@@ -59,12 +63,14 @@ function EmailApp() {
         <div className="adminemailcontainer">
             <div className="emailAppContainer">
                 <div className="emailListComponent">
-                    <EmailListComponent emails={mails} onSelectEmail={handleSelectEmail} handleDelete={handleDelete} />
+                    <EmailListComponent emails={mails} isMobile={isMobile} onSelectEmail={handleSelectEmail} handleDelete={handleDelete} />
                 </div>
-                <div className="emailDetailComponent">
+                <div className={`emailDetailComponent ${(isMobile && !selectedEmail) ? "emailDetailcomponentHide" : ""}`}>
                     <EmailDetailComponent
+                        isMobile={isMobile}
                         selectedEmail={selectedEmail}
                         onApprove={handleApprove}
+                        setSelectedEmail={setSelectedEmail}
                     />
                 </div>
             </div>

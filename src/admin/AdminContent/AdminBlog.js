@@ -70,11 +70,11 @@ export default function AdminBlog() {
     const location = useLocation();
     const params = useParams();
     const navigate = useNavigate();
-    const isMobile = useMediaQuery({ query: '(max-width: 500px)' });
+    const isMobile = useMediaQuery({ query: '(max-width: 786px)' });
 
     const getInitialContent = () => {
         return [
-            { type: "heading", content: location.state.title },
+            { type: "heading", content: location.state?.title || params.category },
             { type: "paragraph", content: "" },
         ];
     };
@@ -109,10 +109,10 @@ export default function AdminBlog() {
     };
 
     useEffect(() => {
-        if (!location.state.isNew) {
+        if (!location.state?.isNew) {
             loadContentFromDB();
         }
-    }, [location.state.isNew]);
+    }, [location.state?.isNew]);
 
     const handleFileChange = async (event) => {
         const file = event.target.files[0];
@@ -149,7 +149,7 @@ export default function AdminBlog() {
         const jsonContent = JSON.stringify(editor.document);
         await axiosPrivate.put(`/file/`, {
             content: jsonContent,
-            type: location.state.category,
+            type: location.state?.category,
             title: title,
             _id: params.id
         }).then((res) => {
@@ -169,7 +169,7 @@ export default function AdminBlog() {
             <div className="contentType">
                 {upload.cover && location.state?.category && (
                     <h1 className='ebGaramond'>
-                        {location.state.category.charAt(0).toUpperCase() + location.state.category.slice(1)}
+                        {location.state?.category.charAt(0).toUpperCase() + location.state?.category.slice(1)}
                     </h1>
                 )}
             </div>

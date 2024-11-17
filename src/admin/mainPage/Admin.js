@@ -1,14 +1,21 @@
 import React from 'react'
 import './Admin.css'
 import AdminNavbar from '../navbar/AdminNavbar'
-import AdminContent from '../AdminContent/AdminContent'
-import AdminBlog from '../AdminContent/AdminBlog'
 import { Outlet } from 'react-router-dom'
+import StickyMenuBar from './StickyMenuBar'
 
 function Admin() {
+
+  const [isVisible, setIsVisible] = React.useState(false)
+
+  const toggleVisibility = () => {
+    setIsVisible(!isVisible)
+  }
+
   return (
     <div className="adminLandingPage">
-      <AdminNavbar />
+      <StickyMenuBar toggleVisibility={toggleVisibility} />
+      <AdminNavbar isVisible={isVisible} toggleVisibility={toggleVisibility} />
       <Outlet />
     </div>
   )

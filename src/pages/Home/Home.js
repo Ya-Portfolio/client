@@ -41,7 +41,7 @@ function Home() {
     const fetchdata = async () => {
         try {
             const response = await axiosPrivate.get('/profile')
-            // console.log(response.data.data)
+            console.log(response.data.data)
             setAbout(response.data?.data?.about || abt)
             setEducation(response.data?.data?.education || edu)
             setName(response.data?.data?.name || nama)
@@ -127,7 +127,7 @@ function Home() {
                     newValue = 'Skills';
                 } else if (scrollY > 2415 && scrollY < 2415 + ((isMobile ? 300 : 600) * cardItems.length) + 700) {
                     newValue = 'Projects';
-                } else if (scrollY > 2415 + ((isMobile ? 300 : 600) * cardItems.length) + 700 && scrollY < document.documentElement.scrollHeight - 400) {
+                } else if (scrollY > 2415 + ((isMobile ? 300 : 600) * cardItems.length) && scrollY < document.documentElement.scrollHeight - 400) {
                     newValue = 'Achievements';
                 }
                 else {
@@ -175,7 +175,7 @@ function Home() {
     //     "AWS: Solution Architect Certification"
     // ];
 
-    const isMobile = useMediaQuery({ query: '(max-width: 500px)' });
+    const isMobile = useMediaQuery({ query: '(max-width: 786px)' });
 
 
     useEffect(() => {
@@ -183,8 +183,8 @@ function Home() {
         const content1 = document.querySelector('.carousel');
         // console.log(isMobile)
 
-        const cardHeight = isMobile ? 315 : 600;
-        quaternaryPage.style.height = `${cardHeight * cardItems.length + 800}px`;
+        const cardHeight = isMobile ? 400 : 600;
+        quaternaryPage.style.height = `${cardHeight * cardItems.length + (isMobile ? 100 : 800)}px`;
         content1.style.height = '100%';
 
     }, [isMobile, cardItems.length]);
@@ -197,7 +197,7 @@ function Home() {
     return (
         <div className="homeContainer">
             <div className="mainlandingPage">
-                <Navbar title={isScrolled ? 'Chandrababu Gowda' : "CG"} value={value} isActive={isActive} />
+                <Navbar title={isScrolled ? `${name}` : "CG"} value={value} isActive={isActive} />
                 <div className="mainContent">
                     <h1 className='ebGaramond'>{name}</h1>
                     <ul>
@@ -236,9 +236,9 @@ function Home() {
                                     <h2 className='ebGaramond'>{skill.name}</h2>
                                     <div className="services">
                                         {
-                                            imageArr.map((image, index) => (
+                                            skill.gallery.map((image, index) => (
                                                 <div className="service" key={index + 98762}>
-                                                    <img src={image} alt="" />
+                                                    <img src={image.location} alt="" />
                                                 </div>
                                             ))
                                         }

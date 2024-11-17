@@ -2,7 +2,7 @@ import React from 'react';
 import './EmailComponent.css';
 import { DeleteOutline } from '@mui/icons-material';
 
-function EmailListComponent({ emails, onSelectEmail, handleDelete }) {
+function EmailListComponent({ emails, onSelectEmail, handleDelete, isMobile }) {
     // console.log(emails)
     return (
         <div className="emailListContainer">

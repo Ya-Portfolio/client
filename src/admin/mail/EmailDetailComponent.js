@@ -2,8 +2,9 @@ import React from 'react';
 import './EmailComponent.css';
 import { toast } from 'sonner';
 import axiosPrivate from '../../api/axios';
+import { ArrowBigLeft } from 'lucide-react';
 
-function EmailDetailComponent({ selectedEmail, onApprove }) {
+function EmailDetailComponent({ selectedEmail, onApprove, isMobile, setSelectedEmail }) {
     const replyText = React.createRef();
 
     const handleReply = async (value) => {
@@ -26,12 +27,16 @@ function EmailDetailComponent({ selectedEmail, onApprove }) {
 
     };
 
+
     if (!selectedEmail) {
         return <div className="emailDetailEmpty">Select an email to view its content</div>;
     }
 
     return (
         <div className="emailDetailContainer">
+            <div className="ExtraMobileIcon" >
+                <ArrowBigLeft fill='blue' onClick={()=>setSelectedEmail(null)}/>
+            </div>
             <h2 className="emailDetailSender">{selectedEmail.name}</h2>
             <p className="emailDetailDate">{selectedEmail.email}</p>
             <div className="emailFullContent">{selectedEmail.message}</div>

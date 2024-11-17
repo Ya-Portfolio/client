@@ -1,27 +1,26 @@
 .adminDashboard {
-    margin: 30px 0 0 150px;
-    width: 85%;
+  margin: 30px 0 0 150px;
+  width: 85%;
 }
 
 .adminDashboard h1 {
-    position: relative;
-    z-index: 1;
-    font-size: 40px;
-    padding: 5px 10px;
-    width: 75%;
-    line-height: 80px;
-    color: var(--font-color);
-    font-weight: 600;
+  position: relative;
+  z-index: 1;
+  font-size: 40px;
+  padding: 5px 10px;
+  width: 75%;
+  line-height: 80px;
+  color: var(--font-color);
+  font-weight: 600;
 }
 
 .actualAdminContent {
-    width: 100%;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 50px;
-    margin-top: 35px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
+  margin-top: 35px;
 }
-
 
 /* .adminDashboard h1::before {
     content: "Admin";
@@ -38,215 +37,215 @@
 } */
 
 .adminNoteCards {
-    /* width: 450px; */
-    border-radius: 20px;
-    padding: 24px;
-    /* height: 500px; */
-    overflow: hidden;
-    box-shadow: var(--box-shadow-color);
+  /* width: 450px; */
+  border-radius: 20px;
+  padding: 24px;
+  height: 786px;
+  overflow: hidden;
+  box-shadow: var(--box-shadow-color);
 }
 
 .actualAdminContent .adminNoteCards:last-child {
-    margin-bottom: 50px;
+  margin-bottom: 50px;
 }
 
 .adminNoteHeader {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 
-    h2 {
-        font-size: 27px;
-    }
+  h2 {
+    font-size: 27px;
+  }
 
-    button {
-        display: inline-block;
-        padding: 12px 24px;
-        background-color: var(--font-color);
-        color: var(--bg-color);
-        border: none;
-        border-radius: 12px;
-        font-size: 16px;
-        font-weight: 600;
-        text-align: center;
-        cursor: pointer;
-        transition: background-color 0.3s ease, box-shadow 0.3s ease;
-        text-decoration: none;
-        user-select: none;
-        width: 50%;
-    }
+  button {
+    display: inline-block;
+    padding: 12px 24px;
+    background-color: var(--font-color);
+    color: var(--bg-color);
+    border: none;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 600;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    text-decoration: none;
+    user-select: none;
+    width: 50%;
+  }
 
-    button:hover {
-        background-color: var(--font-secondary-color);
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-        color: var(--font-color);
-    }
+  button:hover {
+    background-color: var(--font-secondary-color);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    color: var(--font-color);
+  }
 
-    button:active {
-        background-color: var(--font-secondary-color);
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
-    }
+  button:active {
+    background-color: var(--font-secondary-color);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+  }
 
-    button:focus {
-        outline: none;
-        box-shadow: 0 0 0 4px rgba(0, 113, 227, 0.4);
-    }
+  button:focus {
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(0, 113, 227, 0.4);
+  }
 }
 
 .adminMainLandingPage .adminNoteHeader button {
-    width: 100%;
+  width: 100%;
 }
 
-
-
-
 .adminBlogsContent {
-    margin-top: 24px;
-    overflow-y: auto;
-    height: 100%;
-    padding-bottom: 30px;
+  margin-top: 24px;
+  overflow-y: auto;
+  height: 100%;
+  padding-bottom: 90px;
 
+  .adminBlogContainer {
+    padding: 12px;
+    border: 2px #00000031 solid;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    font-family: "Helvetica Neue", sans-serif;
+    font-size: 14px;
+    color: #333;
+    position: relative;
+    width: 95%;
+    margin: 6px auto;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
 
-    .adminBlogContainer {
-        padding: 12px;
-        border: 2px #00000031 solid;
-        border-radius: 12px;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        background-color: #fff;
-        font-family: "Helvetica Neue", sans-serif;
-        font-size: 14px;
-        color: #333;
-        position: relative;
-        margin: 6px auto;
-        transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
+  & .adminBlogContainer:last-child {
+    margin-bottom: 20px;
+  }
 
-    & .adminBlogContainer:last-child {
-        margin-bottom: 20px;
-    }
+  .adminBlogContainer:hover {
+    transform: translateY(1px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+  }
 
-    .adminBlogContainer:hover {
-        transform: translateY(1px);
-        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
-    }
+  .adminBlogContainer h3 {
+    font-size: 18px;
+    margin: 8px 0;
+  }
 
-    .adminBlogContainer h3 {
-        font-size: 18px;
-        margin: 8px 0;
-    }
+  .adminBlogContainer p {
+    font-size: 14px;
+    line-height: 1.4;
+    color: #666;
+  }
 
-    .adminBlogContainer p {
-        font-size: 14px;
-        line-height: 1.4;
-        color: #666;
-    }
+  .adminBlogContainer input[type="date"] {
+    font-size: 14px;
+    line-height: 1.4;
+    color: #666;
+    outline: none;
+  }
 
-    .adminBlogContainer input[type="date"] {
-        font-size: 14px;
-        line-height: 1.4;
-        color: #666;
-        outline: none;
-    }
-
-    input[type="text"] {
-        /* padding: 6px 0; */
-        outline: none;
-        margin: 8px 0;
-        font-size: 18px;
-    }
-
-
+  input[type="text"] {
+    /* padding: 6px 0; */
+    outline: none;
+    margin: 8px 0;
+    font-size: 18px;
+  }
 }
 
 .adminNavbarSecondaryChild {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 62px;
-    flex-direction: column;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 62px;
+  flex-direction: column;
 }
 
 .adminNoteContainerComplete {
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
 
-    .adminNotePrimaryChild {
-        width: 80%;
-    }
+  .adminNotePrimaryChild {
+    width: 80%;
+  }
 
-    h1,
-    input[type="text"] {
-        outline: none;
-        margin: 8px 0;
-        font-size: 18px;
-    }
-
+  h1,
+  input[type="text"] {
+    outline: none;
+    margin: 8px 0;
+    font-size: 18px;
+  }
 }
 
 .dropdown-menu {
-    position: absolute;
-    background-color: white;
-    border: 1px solid #ccc;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    z-index: 1000;
-    right: 10%;
-    top: 10%;
-    border-radius: 12px;
-    overflow: hidden;
-    font-size: 12px;
-    font-weight: 600;
+  position: absolute;
+  background-color: white;
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  right: 10%;
+  top: 10%;
+  border-radius: 12px;
+  overflow: hidden;
+  font-size: 12px;
+  font-weight: 600;
 }
 
 .dropdown-menu button {
-    display: block;
-    padding: 8px 16px;
-    border: none;
-    background: none;
-    cursor: pointer;
-    text-align: left;
-    width: 100%;
+  display: block;
+  padding: 8px 16px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  text-align: left;
+  width: 100%;
 }
-
 
 .dropdown-menu button:hover {
-    background-color: #f0f0f0;
+  background-color: #f0f0f0;
 }
 
+@media screen and (min-width: 800px) and (max-width: 1200px) {
+  .adminBlogsContent {
+    height: 600px;
+    padding-bottom: 151px;
+    margin-bottom: 40px;
+  }
+}
 
-@media only screen and (max-width: 500px) {
-    .adminDashboard {
-        margin: 40px 0 0 0;
-    }
+@media only screen and (max-width: 786px) {
+  .adminDashboard {
+    margin: 40px 0 0 0;
+  }
 
-    .adminDashboard h1 {
-        font-size: 24px;
-        line-height: 32px;
-    }
+  .adminDashboard h1 {
+    font-size: 24px;
+    line-height: 32px;
+  }
 
-    .actualAdminContent {
-        grid-template-columns: 1fr;
-    }
+  .actualAdminContent {
+    grid-template-columns: 1fr;
+  }
 
-    .adminDashboard {
-        width: 100%;
-    }
+  .adminDashboard {
+    width: 100%;
+  }
 
-    .adminNoteCards {
-        width: 94%;
-        margin: auto;
-        padding: 20px;
-    }
+  .adminNoteCards {
+    width: 94%;
+    margin: auto;
+    padding: 20px;
+  }
 
-    .adminNoteHeader {
-        & h2 {
-            font-size: 22px;
-        }
+  .adminNoteHeader {
+    & h2 {
+      font-size: 22px;
     }
+  }
 
-    .adminNoteHeader button {
-        padding: 6px 12px;
-        font-size: 16px;
-        font-weight: 300;
-    }
+  .adminNoteHeader button {
+    padding: 6px 12px;
+    font-size: 16px;
+    font-weight: 300;
+  }
 }

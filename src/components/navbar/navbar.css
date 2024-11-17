@@ -1,244 +1,241 @@
 .customMenu {
-    width: 25px;
-    height: 25px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
-    cursor: pointer;
-    z-index: 100;
+  width: 25px;
+  height: 25px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  cursor: pointer;
+  z-index: 100;
 }
 
 .menuItem {
-    width: 10px;
-    height: 10px;
-    background: var(--dark-font-color);
-    border-radius: 50%;
+  width: 10px;
+  height: 10px;
+  background: var(--dark-font-color);
+  border-radius: 50%;
 }
 
 .menuItemdark {
-    width: 10px;
-    height: 10px;
-    background: var(--dark-bg-color);
-    border-radius: 50%;
+  width: 10px;
+  height: 10px;
+  background: var(--dark-bg-color);
+  border-radius: 50%;
 }
 
 nav {
-    z-index: 101;
-    position: relative;
+  z-index: 101;
+  position: relative;
 }
 
 nav li {
-    list-style: none;
-    z-index: 101;
+  list-style: none;
+  z-index: 101;
 }
 
 .fixedPos {
-    position: fixed;
-    right: 0;
-    z-index: 100;
-    width: 100vw;
-    z-index: 50;
+  position: fixed;
+  right: 0;
+  z-index: 100;
+  width: 100vw;
+  z-index: 50;
 }
 
 nav ul {
-    padding: 40px 40px 40px 120px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  padding: 40px 40px 40px 120px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 nav ul li:last-child {
-    position: relative;
-    right: 100px;
-    /* z-index: 101; */
+  position: relative;
+  right: 100px;
+  /* z-index: 101; */
 }
 
 .logoheader h1 {
-    font-size: 40px;
-    padding: 5px 10px;
-    line-height: 80px;
-    color: var(--dark-font-color);
+  font-size: 40px;
+  padding: 5px 10px;
+  line-height: 80px;
+  color: var(--dark-font-color);
 }
 
 .border {
-    height: 48px;
-    width: 12px;
-    border: 3px solid var(--dark-font-color);
-    border-radius: 3px;
+  height: 48px;
+  width: 12px;
+  border: 3px solid var(--dark-font-color);
+  border-radius: 3px;
 }
 
 .logo {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 10;
-    position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+  position: relative;
 }
 
 .menuBar {
-    width: 50%;
-    position: fixed;
-    right: 0;
-    top: 0;
-    height: 100vh;
-    background-color: var(--dark-font-color);
-    z-index: 100;
-    display: flex;
-    align-items: center;
-    transition: max-height 0.5s ease, opacity 0.5s ease;
-    padding: 100px;
-    font-size: 24px;
+  width: 50%;
+  position: fixed;
+  right: 0;
+  top: 0;
+  height: 100vh;
+  background-color: var(--dark-font-color);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  transition: max-height 0.5s ease, opacity 0.5s ease;
+  padding: 100px;
+  font-size: 24px;
 }
 
-
 .menuBar.hidden {
-    /* max-height: 0; */
-    opacity: 0;
-    overflow: hidden;
-    display: none;
+  /* max-height: 0; */
+  opacity: 0;
+  overflow: hidden;
+  display: none;
 }
 
 .sticky {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background-color: var(--dark-bg-color);
-    z-index: 15;
-    height: 200px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: var(--dark-bg-color);
+  z-index: 15;
+  height: 200px;
 }
 
 .hiddenContent {
-    opacity: 0;
-    display: none;
+  opacity: 0;
+  display: none;
 }
 
 .visibleContent {
-    opacity: 1;
-    transition: opacity 0.5s ease;
-    display: block;
+  opacity: 1;
+  transition: opacity 0.5s ease;
+  display: block;
 }
 
 .menuBar li {
-    list-style: none;
-    margin: 10px 0;
-    color: var(--dark-bg-color);
-    cursor: pointer;
+  list-style: none;
+  margin: 10px 0;
+  color: var(--dark-bg-color);
+  cursor: pointer;
 }
 
 .menuBar li ul {
-    padding: 0 0 0 50px;
+  padding: 0 0 0 50px;
 }
 
 .dropdown {
-    max-height: 0;
-    opacity: 0;
-    overflow: hidden;
-    transition: max-height 0.3s ease, opacity 0.3s ease;
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease, opacity 0.3s ease;
 }
 
 .dropdown.open {
-    max-height: 200px;
-    opacity: 1;
+  max-height: 200px;
+  opacity: 1;
 }
 
 .value {
-    font-size: 250px !important;
-    opacity: 0;
-    font-weight: 700;
-    color: var(--light-bg-color) !important;
-    position: absolute;
-    left: 0;
-    top: 35px;
-    margin-right: -100%;
-    transition: opacity 1s ease-in-out, margin 0.5s ease-in-out;
+  font-size: 250px !important;
+  opacity: 0;
+  font-weight: 700;
+  color: var(--light-bg-color) !important;
+  position: absolute;
+  left: 0;
+  top: 35px;
+  margin-right: -100%;
+  transition: opacity 1s ease-in-out, margin 0.5s ease-in-out;
 }
 
 .value.active {
-    opacity: 0.1;
-    margin-left: 0;
+  opacity: 0.1;
+  margin-left: 0;
 }
 
 .value.hidden {
-    opacity: 0;
-    margin-right: -100%;
-    transform: translateX(-100%);
+  opacity: 0;
+  margin-right: -100%;
+  transform: translateX(-100%);
 }
 
-
 .sticky ul {
-    background: var(--dark-bg-color);
+  background: var(--dark-bg-color);
 }
 
 .menuBar .customMenu {
-    z-index: 10;
-    position: absolute;
-    top: 7%;
-    right: 18%;
+  z-index: 10;
+  position: absolute;
+  top: 7%;
+  right: 18%;
 }
 
 .menuBar .menuItem {
-    background: var(--dark-bg-color);
+  background: var(--dark-bg-color);
 }
 
 .toggleButton {
-    position: absolute;
-    top: -2px;
-    right: -50px;
-    z-index: 1000;
+  position: absolute;
+  top: -2px;
+  right: -50px;
+  z-index: 1000;
 }
 
 .menuBar::before {
-    content: 'CG';
-    position: absolute;
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    background: var(--dark-font-color);
-    display: flex;
-    left: -6%;
-    justify-content: center;
-    align-items: center;
-    color: var(--dark-bg-color);
-    font-family: "EB Garamond", serif;
-    font-size: 40px;
-    line-height: 42px;
-    font-weight: 700;
-    border-left: 2px solid var(--dark-bg-color);
+  content: "CG";
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: var(--dark-font-color);
+  display: flex;
+  left: -6%;
+  justify-content: center;
+  align-items: center;
+  color: var(--dark-bg-color);
+  font-family: "EB Garamond", serif;
+  font-size: 40px;
+  line-height: 42px;
+  font-weight: 700;
+  border-left: 2px solid var(--dark-bg-color);
 }
 
 .menuBar ul li {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
-@media only screen and (max-width : 500px) {
+@media only screen and (max-width: 786px) {
+  .sticky {
+    display: none;
+  }
 
-    .sticky {
-        display: none;
-    }
+  .fixedPos {
+    padding: 10px;
+    left: 0;
+    right: auto;
+    background-color: var(--dark-bg-color);
+  }
 
-    .fixedPos {
-        padding: 10px;
-        left: 0;
-        right: auto;
-    }
+  .logoheader h1 {
+    font-size: 28px;
+  }
 
-    .logoheader h1 {
-        font-size: 28px;
-    }
+  .border {
+    height: 35px;
+    width: 9px;
+  }
 
-    .border {
-        height: 35px;
-        width: 9px;
-    }
+  .customMenu div {
+    background-color: #000;
+  }
 
-    .customMenu div {
-        background-color: #000;
-    }
-
-    .menuBar {
-        width: 90vw;
-    }
-
+  .menuBar {
+    width: 90vw;
+  }
 }

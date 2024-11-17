@@ -20,6 +20,7 @@ import AdminNotesContent from './admin/notes/AdminNotesContent';
 import EmailApp from './admin/mail/EmailApp';
 // import AdminSkills from './admin/adminSkills/AdminSkills';
 import Skill from './admin/Skills/Skill';
+import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute';
 
 
 function App() {
@@ -37,24 +38,27 @@ function App() {
         <Routes>
           <Route path='/' element={<HomePage />} />
           <Route path='/documents' element={<Documents />} />
+          <Route path='/documents/:category/:id' element={<Documents />} />
           <Route path='/contact' element={<Contact />} />
           <Route path='/login' element={<Login />} />
           <Route path='/blog' element={<Blog />} />
           <Route path='/works' element={<IndividualProject />} />
           <Route path='/public/:id' element={<PublicBlog />} />
-          <Route path='/admin' element={<Admin />}>
-            <Route index element={<MainLanding />} />
-            <Route path='accessories' element={<AdminContent />} />
-            <Route path='email' element={<EmailApp />} />
-            <Route path='documents' element={<AdminDocUpload />} />
-            <Route path='note' element={<AdminNotesContent />} />
-            <Route path='Addskill/:id' element={<Skill />} />
-            {/* <Route path='skills/:id' element={<Skill />} /> */}
-
-            <Route path='document/:id' element={<AdminFile />} />
-            <Route path='edit/:id' element={<AdminBlog />} />
-            <Route path=':category/:id' element={<AdminBlog />} />
+          <Route element={<ProtectedRoute />}>
+            <Route path='/admin' element={<Admin />}>
+              <Route index element={<MainLanding />} />
+              <Route path='accessories' element={<AdminContent />} />
+              <Route path='email' element={<EmailApp />} />
+              <Route path='documents' element={<AdminDocUpload />} />
+              <Route path='note' element={<AdminNotesContent />} />
+              <Route path='Addskill/:id' element={<Skill />} />
+              {/* <Route path='skills/:id' element={<Skill />} /> */}
+              <Route path='document/:id' element={<AdminFile />} />
+              <Route path='edit/:id' element={<AdminBlog />} />
+              <Route path=':category/:id' element={<AdminBlog />} />
+            </Route>
           </Route>
+          <Route path='*' element={<div className='ebGaramond' style={{ height: '100vh', width: '100vw', display: 'flex', justifyContent: "center", alignItems: "center", fontSize: '42px' }}>Uh Uh! I think you followed a broken link.</div>} />
         </Routes>
       </BrowserRouter>
     </Provider>

@@ -39,7 +39,7 @@ function AdminSkills() {
 
     const NavigateToSkill = (id) => {
         const skill = skills.find(obj => obj._id === id)
-        navigate(`/admin/Addskill/${id}`, { state: { title: skill.name, isNewOne: false, gallery: skill.gallery } })
+        navigate(`/admin/Addskill/${id}`, { state: { title: skill.name, skill , isNewOne: false, gallery: skill.gallery } })
     }
 
     const handleDelete = async (id) => {
@@ -78,7 +78,9 @@ function AdminSkills() {
             toast.error("Title mustn't be empty!")
             return
         }
-        navigate(`/admin/Addskill/${id}`, { state: { title: newSkill.current?.value, isNewOne: true } })
+
+
+        navigate(`/admin/Addskill/${id}`, { state: { title: newSkill.current?.value, isNewOne: true} })
     }
 
     return (
@@ -97,7 +99,7 @@ function AdminSkills() {
                                 <h3 className="adminNoteHeader nunito">
                                     {skill.name}
                                 </h3>
-                                <p className="adminNoteDate nunito">
+                                {/* <p className="adminNoteDate nunito">
                                     Skill added on{' '}
                                     {
                                         new Date(skill.date).toLocaleDateString('en-GB', {
@@ -106,7 +108,7 @@ function AdminSkills() {
                                             year: 'numeric',
                                         })
                                     }
-                                </p>
+                                </p> */}
                             </div>
                             <div className="adminNavbarSecondaryChild">
                                 <button className="adminBtn" onClick={() => handleDropdownToggle(index)}>

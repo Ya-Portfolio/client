@@ -5,7 +5,7 @@ import { toggle } from '../../redux/slice'
 import './adminNavbar.css'
 import { Link } from 'react-router-dom'
 
-function AdminNavbar() {
+function AdminNavbar({ isVisible, toggleVisibility }) {
 
     const color = useSelector(state => state.color.color)
     const dispatch = useDispatch()
@@ -45,28 +45,28 @@ function AdminNavbar() {
     return (
         <>
             <ToggleIconForAdmin size={size} />
-            <div className="adminNavbar">
+            <div className={isVisible ? "adminNavbar visibleIcon" : "adminNavbar"}>
                 <div className="adminNavbarContent ebGaramond adminNavbarContent1">
                     CG
                 </div>
                 <div className="adminNavbarContent adminNavbarContent2">
-                    <div className="adminNavbarItems">
+                    <div className="adminNavbarItems" onClick={toggleVisibility}>
                         <Link to="/admin" style={{ textDecoration: 'none' }}> <Home size={size} style={{ stroke: color }} /> </Link>
                     </div>
-                    <div className="adminNavbarItems">
+                    <div className="adminNavbarItems" onClick={toggleVisibility}>
                         <Link to="/admin/accessories" style={{ textDecoration: 'none' }}> <ChartBar size={size} style={{ stroke: color }} /> </Link>
                     </div>
-                    <div className="adminNavbarItems">
+                    <div className="adminNavbarItems" onClick={toggleVisibility}>
                         <Link to="/admin/documents" style={{ textDecoration: 'none' }}> <File size={size} style={{ stroke: color }} /> </Link>
                     </div>
-                    <div className="adminNavbarItems">
+                    <div className="adminNavbarItems" onClick={toggleVisibility}>
                         <Link to="/admin/note" style={{ textDecoration: 'none' }}> <Newspaper size={size} style={{ stroke: color }} /> </Link>
                     </div>
-                    <div className="adminNavbarItems">
+                    <div className="adminNavbarItems" onClick={toggleVisibility}>
                         <Link to="/admin/email" style={{ textDecoration: 'none' }}> <Contact size={size} style={{ stroke: color }} /> </Link>
                     </div>
                 </div>
-                <div className="adminNavbarContent adminNavbarContent3">
+                <div className="adminNavbarContent adminNavbarContent3" onClick={toggleVisibility}>
                     <LogOutIcon size={size} style={{ stroke: color }} />
                 </div>
             </div>

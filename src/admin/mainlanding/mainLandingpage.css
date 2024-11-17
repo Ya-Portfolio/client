@@ -1,168 +1,208 @@
 .mainLandingContainer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 3px;
-    background-color: var(--bg-color);
-    color: var(--font-color);
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-    justify-content: flex-start;
-    width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 3px;
+  background-color: var(--bg-color);
+  color: var(--font-color);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+  justify-content: flex-start;
+  width: 100%;
 }
 
 .profileSection {
-    width: 100%;
-    background-color: var(--bg-color);
-    padding: 20px;
-    margin-bottom: 20px;
-    box-shadow: var(--box-shadow-color);
-    border-radius: 20px;
-    text-align: center;
+  width: 100%;
+  background-color: var(--bg-color);
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: var(--box-shadow-color);
+  border-radius: 20px;
+  text-align: center;
 }
 
 .profileName {
-    font-size: 28px;
-    font-weight: 600;
-    margin-bottom: 10px;
+  font-size: 28px;
+  font-weight: 600;
+  margin-bottom: 10px;
 }
 
 .profileAbout {
-    font-size: 16px;
-    margin-bottom: 20px;
-    text-align: left;
+  font-size: 16px;
+  margin-bottom: 20px;
+  text-align: left;
 }
 
 .sectionsContainer {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    max-width: 1200px;
-    gap: 20px;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1200px;
+  gap: 20px;
 }
 
 .educationSection,
 .internshipSection {
-    flex: 1;
-    background-color: var(--bg-color);
-    padding: 20px;
-    box-shadow: var(--box-shadow-color);
+  flex: 1;
+  background-color: var(--bg-color);
+  padding: 20px;
+  box-shadow: var(--box-shadow-color);
 
-    border-radius: 20px;
+  border-radius: 20px;
 }
 
 .adminaddbtns {
-    border-radius: 20px;
-    padding: 20px;
-    box-shadow: var(--box-shadow-color);
-    background-color: var(--bg-color);
-    width: 100%;
-    display: flex;
-    align-items: center;
-    margin: 10px 0 25px;
-    justify-content: center;
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: var(--box-shadow-color);
+  background-color: var(--bg-color);
+  width: 100%;
+  display: flex;
+  align-items: center;
+  margin: 10px 0 25px;
+  justify-content: center;
 
-    h2 {
-        font-size: 20px;
-        font-weight: 600;
-        margin: 0 20px;
-        cursor: pointer;
-    }
+  h2 {
+    font-size: 20px;
+    font-weight: 600;
+    margin: 0 20px;
+    cursor: pointer;
+  }
 
-    .nowWorkingOn {
-        text-decoration: underline;
-    }
+  .nowWorkingOn {
+    text-decoration: underline;
+  }
 }
 
 .sectionTitle {
-    font-size: 22px;
-    font-weight: 600;
-    margin-bottom: 20px;
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 20px;
 }
 
 .educationItem {
-    margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 
 .educationDisplay,
 .educationForm {
-    text-align: left;
+  text-align: left;
 }
 
 .educationSchool {
-    font-size: 18px;
-    font-weight: 500;
+  font-size: 18px;
+  font-weight: 500;
 }
 
 .educationDetails {
-    font-size: 14px;
-    color: #666;
+  font-size: 14px;
+  color: #666;
 }
 
 .inputField,
 .textareaField {
-    width: 100%;
-    padding: 10px;
-    border-radius: 12px;
-    border: 1px solid #ccc;
-    margin-bottom: 15px;
-    background-color: var(--bg-color);
-    color: var(--font-color);
-    font-size: 16px;
+  width: 100%;
+  padding: 10px;
+  border-radius: 12px;
+  border: 1px solid #ccc;
+  margin-bottom: 15px;
+  background-color: var(--bg-color);
+  color: var(--font-color);
+  font-size: 16px;
 }
 
-
-
 .actionButton {
-    background-color: var(--bg-color);
-    color: var(--font-color);
-    padding: 10px 20px;
-    border-radius: 12px;
-    outline: none;
-    cursor: pointer;
-    font-size: 16px;
-    transition: background-color 0.3s ease;
-    border: 2px solid #da190b;
+  background-color: var(--bg-color);
+  color: var(--font-color);
+  padding: 10px 20px;
+  border-radius: 12px;
+  outline: none;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+  border: 2px solid #da190b;
 }
 
 .actionButton:hover {
-    background-color: var(--bg-color);
-    color: #da190b;
-    font-weight: 500;
+  background-color: var(--bg-color);
+  color: #da190b;
+  font-weight: 500;
 }
 
 .roundedBlock {
-    border-radius: 20px;
-    padding: 20px;
-    box-shadow: var(--box-shadow-color);
-    background-color: var(--bg-color);
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: var(--box-shadow-color);
+  background-color: var(--bg-color);
 }
 
 .adminMainLandingPage {
-    padding: 50px 0 0 150px;
-    width: 90%;
-    display: grid;
-    grid-template-columns: 1fr;
+  padding: 50px 0 0 150px;
+  width: 90%;
+  display: grid;
+  grid-template-columns: 1fr;
 }
 
 .mainLandingContainer {
-
-    .adminBtn {
-        width: 100%;
-    }
+  .adminBtn {
+    width: 100%;
+  }
 }
 
 .mainlandingContainerAdmin {
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
 
-    .admininternshipskills {
-        width: 40%;
-        height: 90%;
-        overflow: hidden;
-    }
+.admininternshipskills {
+  width: 40%;
+  height: 90%;
+  overflow: hidden;
+}
 
-    .educationComponent {
-        width: 40%;
-    }
+.educationComponent {
+  width: 40%;
+}
+
+@media screen and (min-width: 800px) and (max-width: 1200px) {
+  .adminMainLandingPage {
+    width: 98%;
+    padding: 100px 0 0 150px;
+  }
+
+  .mainlandingContainerAdmin {
+    flex-direction: column;
+  }
+
+  .admininternshipskills {
+    width: 100%;
+    margin-bottom: 30px;
+  }
+
+  .educationComponent {
+    width: 95%;
+    margin: auto;
+  }
+}
+
+@media only screen and (max-width: 786px) {
+  .adminMainLandingPage {
+    padding: 10px;
+    width: 98%;
+    margin: auto;
+  }
+
+  .mainlandingContainerAdmin {
+    flex-direction: column;
+  }
+
+  .admininternshipskills {
+    width: 100%;
+    margin-bottom: 30px;
+  }
+
+  .educationComponent {
+    width: 100% !important;
+  }
 }
