@@ -98,13 +98,13 @@
   height: 100%;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  padding: 0 0 0 120px;
+  padding: 0 0 0 50px;
   align-items: center;
   color: var(--light-font-color);
 }
 
 .content {
-  width: 600px;
+  width: 85%;
   font-size: 24px;
   line-height: 40px;
   text-wrap: auto;
@@ -123,9 +123,10 @@
 
 .eduContainer {
   padding-bottom: 20px;
-  width: 786px;
+  width: 85%;
   justify-content: space-between;
 }
+
 
 .clgName p:first-child,
 .marks p:first-child {
